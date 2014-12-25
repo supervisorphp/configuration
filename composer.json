@@ -1,0 +1,37 @@
+{
+    "name": "indigophp/supervisor-configuration",
+    "description": "Manage Supervisor configuration in PHP",
+    "license": "MIT",
+    "keywords": ["supervisor", "configuration"],
+    "homepage": "https://indigophp.com",
+    "authors": [
+        {
+            "name": "Márk Sági-Kazár",
+            "email": "mark.sagikazar@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "symfony/options-resolver": "~2.6"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "~2.0",
+        "henrikbjorn/phpspec-code-coverage" : "1.0.*@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Indigo\\Supervisor\\": "src/"
+        },
+        "files": ["src/functions.php"]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Indigo\\Supervisor\\Stub\\": "stub/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
+}
