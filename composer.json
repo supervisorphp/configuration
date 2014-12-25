@@ -15,8 +15,8 @@
         "symfony/options-resolver": "~2.6"
     },
     "require-dev": {
-        "phpspec/phpspec": "2.1.*@dev,>=2.1.0-RC2",
-        "henrikbjorn/phpspec-code-coverage" : "1.0.*@dev"
+        "phpspec/phpspec": "~2.1.0",
+        "henrikbjorn/phpspec-code-coverage" : "~1.0.0"
     },
     "autoload": {
         "psr-4": {
