@@ -33,23 +33,7 @@ class Program extends Named
      */
     protected function configureProperties(OptionsResolver $resolver)
     {
-        $resolver
-            ->setRequired('command')
-            ->setAllowedTypes('command', 'string');
-
-        $resolver
-            ->setDefined('process_name')
-            ->setAllowedTypes('process_name', 'string');
-
-        $resolver->setDefined('numprocs');
-        $this->configureIntegerProperty('numprocs', $resolver);
-
-        $resolver->setDefined('numprocs_start');
-        $this->configureIntegerProperty('numprocs_start', $resolver);
-
-        $resolver->setDefined('priority');
-        $this->configureIntegerProperty('priority', $resolver);
-
+        $this->configureProcessProperties($resolver);
         $this->configureStartControlProperties($resolver);
         $this->configureStopControlProperties($resolver);
 
@@ -75,11 +59,36 @@ class Program extends Named
     }
 
     /**
+     * Configures process related properties
+     *
+     * @param OptionsResolver $resolver
+     */
+    private function configureProcessProperties(OptionsResolver $resolver)
+    {
+        $resolver
+            ->setRequired('command')
+            ->setAllowedTypes('command', 'string');
+
+        $resolver
+            ->setDefined('process_name')
+            ->setAllowedTypes('process_name', 'string');
+
+        $resolver->setDefined('numprocs');
+        $this->configureIntegerProperty('numprocs', $resolver);
+
+        $resolver->setDefined('numprocs_start');
+        $this->configureIntegerProperty('numprocs_start', $resolver);
+
+        $resolver->setDefined('priority');
+        $this->configureIntegerProperty('priority', $resolver);
+    }
+
+    /**
      * Configures start control related properties
      *
      * @param OptionsResolver $resolver
      */
-    protected function configureStartControlProperties(OptionsResolver $resolver)
+    private function configureStartControlProperties(OptionsResolver $resolver)
     {
         $resolver->setDefined('autostart');
         $this->configureBooleanProperty('autostart', $resolver);
@@ -105,7 +114,7 @@ class Program extends Named
      *
      * @param OptionsResolver $resolver
      */
-    protected function configureStopControlProperties(OptionsResolver $resolver)
+    private function configureStopControlProperties(OptionsResolver $resolver)
     {
         $resolver->setDefined('exitcodes');
         $this->configureArrayProperty('exitcodes', $resolver);
@@ -130,7 +139,7 @@ class Program extends Named
      *
      * @param OptionsResolver $resolver
      */
-    protected function configureLogProperties(OptionsResolver $resolver)
+    private function configureLogProperties(OptionsResolver $resolver)
     {
         $resolver->setDefined('redirect_stderr');
         $this->configureBooleanProperty('redirect_stderr', $resolver);
@@ -144,7 +153,7 @@ class Program extends Named
      *
      * @param OptionsResolver $resolver
      */
-    protected function configureStdoutLogProperties(OptionsResolver $resolver)
+    private function configureStdoutLogProperties(OptionsResolver $resolver)
     {
         $resolver
             ->setDefined('stdout_logfile')
@@ -171,7 +180,7 @@ class Program extends Named
      *
      * @param OptionsResolver $resolver
      */
-    protected function configureStderrLogProperties(OptionsResolver $resolver)
+    private function configureStderrLogProperties(OptionsResolver $resolver)
     {
         $resolver
             ->setDefined('stderr_logfile')
