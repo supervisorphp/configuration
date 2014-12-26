@@ -7,6 +7,7 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/indigophp/supervisor-configuration.svg?style=flat-square)](https://scrutinizer-ci.com/g/indigophp/supervisor-configuration)
 [![HHVM Status](https://img.shields.io/hhvm/indigophp/supervisor-configuration.svg?style=flat-square)](http://hhvm.h4cc.de/package/indigophp/supervisor-configuration)
 [![Total Downloads](https://img.shields.io/packagist/dt/indigophp/supervisor-configuration.svg?style=flat-square)](https://packagist.org/packages/indigophp/supervisor-configuration)
+[![Dependency Status](https://www.versioneye.com/user/projects/549ca8a96b1b81d9a400091d/badge.svg?style=flat)](https://www.versioneye.com/user/projects/549ca8a96b1b81d9a400091d)
 
 **Manage Supervisor configuration in PHP.**
 
