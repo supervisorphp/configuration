@@ -9,23 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace Indigo\Supervisor\Stub;
-
-use Indigo\Supervisor\Configuration\Parser\Base;
-use Indigo\Supervisor\Configuration;
+namespace Indigo\Supervisor\Exception;
 
 /**
- * Parser Stub
+ * Thrown when a writer cannot write a configuration
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class Parser extends Base
+class WrittingFailed extends \Exception
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function parse(Configuration $configuration = null)
-    {
-        // noop
-    }
+
 }

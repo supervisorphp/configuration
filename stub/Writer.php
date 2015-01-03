@@ -11,21 +11,31 @@
 
 namespace Indigo\Supervisor\Stub;
 
-use Indigo\Supervisor\Configuration\Parser\Base;
+use Indigo\Supervisor\Configuration\Writer\RendererAware;
 use Indigo\Supervisor\Configuration;
 
 /**
- * Parser Stub
+ * Writer Stub
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class Parser extends Base
+class Writer extends RendererAware
 {
     /**
      * {@inheritdoc}
      */
-    public function parse(Configuration $configuration = null)
+    public function write(Configuration $configuration)
     {
         // noop
+    }
+
+    /**
+     * Returns the renderer object
+     *
+     * @return Renderer
+     */
+    public function getRenderer()
+    {
+        return $this->renderer;
     }
 }

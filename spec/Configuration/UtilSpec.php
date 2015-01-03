@@ -3,7 +3,6 @@
 namespace spec\Indigo\Supervisor\Configuration;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class UtilSpec extends ObjectBehavior
 {
