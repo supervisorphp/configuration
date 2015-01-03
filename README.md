@@ -22,15 +22,16 @@ $ composer require indigophp/supervisor-configuration
 
 ## Usage
 
-Generate and parse configuration for supervisor.
+Create a configuration using the builder.
 
 ``` php
 use Indigo\Supervisor\Configuration;
 use Indigo\Supervisor\Configuration\Section\Supervisord;
 use Indigo\Supervisor\Configuration\Section\Program;
-use Indigo\Supervisor\Configuration\Renderer\Basic;
+use Indigo\Supervisor\Configuration\Renderer;
 
 $config = new Configuration;
+$renderer = new Renderer;
 
 $section = new Supervisord(['identifier' => 'supervisor']);
 $config->addSection($section);
@@ -82,10 +83,33 @@ $parser->parse($configuration);
 Available parsers:
 
 - _File_
+- _Filesystem_ (Using [league/flysystem](https://github.com/thephpleague/flysystem))
 - _Text_
 
 
-You can find detailed info about options for each section here:
+### Writting configuration
+
+You can use `Writer`s to write configuration to various destinations.
+
+``` php
+use Indigo\Supervisor\Configuration;
+use Indigo\Supervisor\Configuration\Writer\File;
+
+// As a second parameter you can optionally pass an instance of Indigo\Supervisor\Configuration\Renderer
+$writer = new File('/etc/supervisor/supervisord.conf');
+
+$configuration = new Configuration;
+
+$writer->write($configuration);
+```
+
+Available writers:
+
+- _File_
+- _Filesystem_ (Using [league/flysystem](https://github.com/thephpleague/flysystem))
+
+
+You can find detailed info about properties for each section here:
 [http://supervisord.org/configuration.html](http://supervisord.org/configuration.html)
 
 
