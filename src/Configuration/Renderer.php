@@ -18,7 +18,7 @@ use Indigo\Supervisor\Configuration;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-interface Renderer
+class Renderer
 {
     /**
      * Renders a configuration
@@ -27,7 +27,16 @@ interface Renderer
      *
      * @return string
      */
-    public function render(Configuration $configuration);
+    public function render(Configuration $configuration)
+    {
+        $output = '';
+
+        foreach ($configuration->getSections() as $name => $section) {
+            $output .= $this->renderSection($section);
+        }
+
+        return $output;
+    }
 
     /**
      * Renders a section
@@ -36,5 +45,36 @@ interface Renderer
      *
      * @return string
      */
-    public function renderSection(Section $section);
+    public function renderSection(Section $section)
+    {
+        $output = sprintf("[%s]\n", $section->getName());
+
+        foreach ($section->getProperties() as $key => $value) {
+            $value = $this->normalizeValue($value);
+            $output .= sprintf("%s = %s\n", $key, $value);
+        }
+
+        // Write a linefeed after sections
+        $output .= "\n";
+
+        return $output;
+    }
+
+    /**
+     * Normalize value to valid INI format
+     *
+     * @param mixed $value
+     *
+     * @return string
+     */
+    protected function normalizeValue($value)
+    {
+        if (is_array($value)) {
+            return implode(',', $value);
+        } elseif (is_bool($value)) {
+            return $value ? 'true' : 'false';
+        }
+
+        return $value;
+    }
 }

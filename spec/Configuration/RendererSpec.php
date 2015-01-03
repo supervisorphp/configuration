@@ -1,17 +1,16 @@
 <?php
 
-namespace spec\Indigo\Supervisor\Configuration\Renderer;
+namespace spec\Indigo\Supervisor\Configuration;
 
 use Indigo\Supervisor\Configuration;
 use Indigo\Supervisor\Configuration\Section;
 use PhpSpec\ObjectBehavior;
 
-class BasicSpec extends ObjectBehavior
+class RendererSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('Indigo\Supervisor\Configuration\Renderer\Basic');
-        $this->shouldImplement('Indigo\Supervisor\Configuration\Renderer');
+        $this->shouldHaveType('Indigo\Supervisor\Configuration\Renderer');
     }
 
     function it_should_allow_to_render_a_configuration(Configuration $configuration, Section $section)
