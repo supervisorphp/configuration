@@ -1,5 +1,8 @@
-# CHANGELOG
+# Change Log
 
-## UNRELEASED
+
+## Unreleased
+
+### Added
 
 - Created split from the main repository
