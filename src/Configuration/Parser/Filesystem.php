@@ -12,6 +12,7 @@
 namespace Indigo\Supervisor\Configuration\Parser;
 
 use Indigo\Supervisor\Configuration;
+use Indigo\Supervisor\Exception\ParsingFailed;
 use League\Flysystem\Filesystem as Flysystem;
 
 /**
@@ -19,7 +20,7 @@ use League\Flysystem\Filesystem as Flysystem;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class Filesystem extends Text
+class Filesystem extends File
 {
     /**
      * @var Flysystem
@@ -27,21 +28,14 @@ class Filesystem extends Text
     protected $filesystem;
 
     /**
-     * @var string
-     */
-    protected $file;
-
-    /**
      * @param Flysystem $filesystem
+     * @param string    $file
      */
     public function __construct(Flysystem $filesystem, $file)
     {
-        if (!$filesystem->has($file)) {
-            throw new \InvalidArgumentException(sprintf('File "%s" not found', $file));
-        }
-
         $this->filesystem = $filesystem;
-        $this->file = $file;
+
+        parent::__construct($file);
     }
 
     /**
@@ -49,8 +43,14 @@ class Filesystem extends Text
      */
     public function parse(Configuration $configuration = null)
     {
-        $this->text = $this->filesystem->read($this->file);
+        if (!$this->filesystem->has($this->file)) {
+            throw new ParsingFailed(sprintf('File "%s" not found', $this->file));
+        }
 
-        return parent::parse($configuration);
+        $fileContents = $this->filesystem->read($this->file);
+
+        $parser = new Text($fileContents);
+
+        return $parser->parse($configuration);
     }
 }

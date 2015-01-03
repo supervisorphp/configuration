@@ -31,10 +31,6 @@ class Text extends Base
      */
     public function __construct($text)
     {
-        if (!is_string($text)) {
-            throw new \InvalidArgumentException('Argument must be string');
-        }
-
         $this->text = $text;
     }
 
@@ -48,8 +44,8 @@ class Text extends Base
         }
 
         // Suppress error to handle it
-        if (false === ($ini = @parse_ini_string($this->text, true, INI_SCANNER_RAW))) {
-            throw new ParsingFailed('Given string cannot be parsed as INI');
+        if (!$ini = @parse_ini_string($this->text, true, INI_SCANNER_RAW)) {
+            throw new ParsingFailed('Given data cannot be parsed as INI string');
         }
 
         $sections = $this->parseArray($ini);

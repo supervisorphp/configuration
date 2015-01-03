@@ -23,11 +23,6 @@ class TextSpec extends ObjectBehavior
         $this->shouldImplement('Indigo\Supervisor\Configuration\Parser');
     }
 
-    function it_throws_an_exception_when_invalid_text_given()
-    {
-        $this->shouldThrow('InvalidArgumentException')->during('__construct', [null]);
-    }
-
     function it_parses_configuration(Configuration $configuration)
     {
         $configuration->addSections(Argument::type('array'))->shouldBeCalled();

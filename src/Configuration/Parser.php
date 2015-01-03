@@ -22,9 +22,9 @@ use Indigo\Supervisor\Exception\ParsingFailed;
 interface Parser
 {
     /**
-     * Parse an input to a configuration file
+     * Parse an input to a configuration
      *
-     * @param Configuration $configuration If null passed, it is created automatically
+     * @param Configuration|null $configuration If null passed, it is created automatically
      *
      * @return Configuration
      *
