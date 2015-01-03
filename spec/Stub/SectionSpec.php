@@ -15,39 +15,43 @@ class SectionSpec extends ObjectBehavior
     {
         $this->shouldHaveType('Indigo\Supervisor\Stub\Section');
         $this->shouldHaveType('Indigo\Supervisor\Configuration\Section\Base');
+    }
+
+    function it_is_a_section()
+    {
         $this->shouldImplement('Indigo\Supervisor\Configuration\Section');
     }
 
-    function it_should_allow_to_get_a_property()
+    function it_returns_a_property()
     {
         $this->getProperty('key')->shouldReturn('value');
     }
 
-    function it_should_allow_to_get_a_non_existent_property()
+    function it_returns_a_non_existent_property()
     {
         $this->getProperty('non_existent_key')->shouldReturn(null);
     }
 
-    function it_should_allow_to_set_a_property()
+    function it_accepts_a_property()
     {
         $this->setProperty('key', 'value2');
 
         $this->getProperty('key')->shouldReturn('value2');
     }
 
-    function it_should_allow_to_get_properties()
+    function it_returns_properties()
     {
         $this->getProperties()->shouldReturn(['key' => 'value']);
     }
 
-    function it_should_allow_to_set_properties()
+    function it_accepts_properties()
     {
         $this->setProperties(['key' => 'value2']);
 
         $this->getProperty('key')->shouldReturn('value2');
     }
 
-    function it_should_allow_to_set_and_normalize_an_environmment_property()
+    function it_accepts_and_normalizes_an_environmment_property()
     {
         $this->setProperty('environment', [
             'key1' => 'val1',

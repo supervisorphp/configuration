@@ -13,7 +13,7 @@ class RendererSpec extends ObjectBehavior
         $this->shouldHaveType('Indigo\Supervisor\Configuration\Renderer');
     }
 
-    function it_should_allow_to_render_a_configuration(Configuration $configuration, Section $section)
+    function it_renders_a_configuration(Configuration $configuration, Section $section)
     {
         $configuration->getSections()->willReturn([$section]);
         $section->getName()->willReturn('section');
@@ -26,7 +26,7 @@ class RendererSpec extends ObjectBehavior
         $this->render($configuration)->shouldReturn("[section]\nkey1 = value\nkey2 = true\nkey3 = val1,val2,val3\n\n");
     }
 
-    function it_should_allow_to_render_a_section(Section $section)
+    function it_renders_a_section(Section $section)
     {
         $section->getName()->willReturn('section');
         $section->getProperties()->willReturn([

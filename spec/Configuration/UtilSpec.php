@@ -12,12 +12,12 @@ class UtilSpec extends ObjectBehavior
         $this->shouldHaveType('Indigo\Supervisor\Configuration\Util');
     }
 
-    function it_should_allow_to_test_a_byte_integer_representation()
+    function it_tests_a_byte_integer_representation()
     {
         $this->isByte(1024)->shouldReturn(true);
     }
 
-    function it_should_allow_to_test_a_byte_string_representation()
+    function it_tests_a_byte_string_representation()
     {
         $this->isByte('10KB')->shouldReturn(true);
         $this->isByte('10kB')->shouldReturn(true);

@@ -16,30 +16,33 @@ class TextSpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->shouldHaveType('Indigo\Supervisor\Configuration\Parser\Text');
-        $this->shouldHaveType('Indigo\Supervisor\Configuration\Parser\Base');
+    }
+
+    function it_is_a_parser()
+    {
         $this->shouldImplement('Indigo\Supervisor\Configuration\Parser');
     }
 
-    function it_should_throw_an_exception_when_invalid_file_given()
+    function it_throws_an_exception_when_invalid_text_given()
     {
-        $this->shouldThrow('InvalidArgumentException')->during('__construct', [true]);
+        $this->shouldThrow('InvalidArgumentException')->during('__construct', [null]);
     }
 
-    function it_should_allow_to_parse(Configuration $configuration)
+    function it_parses_configuration(Configuration $configuration)
     {
         $configuration->addSections(Argument::type('array'))->shouldBeCalled();
 
         $this->parse($configuration);
     }
 
-    function it_should_allow_to_parse_to_a_new_configuration()
+    function it_parses_configuration_into_a_new_instance()
     {
         $configuration = $this->parse();
 
         $configuration->shouldHaveType('Indigo\Supervisor\Configuration');
     }
 
-    function it_should_throw_an_exception_when_parsing_failed()
+    function it_throws_an_exception_when_parsing_failed()
     {
         $this->beConstructedWith('?{}|&~![()^"');
 

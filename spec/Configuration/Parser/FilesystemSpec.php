@@ -19,17 +19,21 @@ class FilesystemSpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->shouldHaveType('Indigo\Supervisor\Configuration\Parser\Filesystem');
-        $this->shouldHaveType('Indigo\Supervisor\Configuration\Parser');
     }
 
-    function it_should_throw_an_exception_when_invalid_file_given(Flysystem $filesystem)
+    function it_is_a_parser()
+    {
+        $this->shouldImplement('Indigo\Supervisor\Configuration\Parser');
+    }
+
+    function it_throws_an_exception_when_invalid_file_given(Flysystem $filesystem)
     {
         $filesystem->has(null)->willReturn(false);
 
         $this->shouldThrow('InvalidArgumentException')->during('__construct', [$filesystem, null]);
     }
 
-    function it_should_allow_to_parse(Flysystem $filesystem, Configuration $configuration)
+    function it_parses_configuration(Flysystem $filesystem, Configuration $configuration)
     {
         $configuration->addSections(Argument::type('array'))->shouldBeCalled();
         $filesystem->read(Argument::type('string'))->willReturn("[supervisord]\nidentifier = supervisor");

@@ -12,7 +12,7 @@ class ConfigurationSpec extends ObjectBehavior
         $this->shouldHaveType('Indigo\Supervisor\Configuration');
     }
 
-    function it_should_allow_to_get_a_section(Section $supervisord)
+    function it_returns_a_section(Section $supervisord)
     {
         $supervisord->getName()->willReturn('supervisord');
 
@@ -23,7 +23,7 @@ class ConfigurationSpec extends ObjectBehavior
         $this->getSection('supervisord')->shouldReturn($supervisord);
     }
 
-    function it_should_allow_to_check_a_section(Section $supervisord)
+    function it_checks_a_section_existence(Section $supervisord)
     {
         $supervisord->getName()->willReturn('supervisord');
 
@@ -34,7 +34,7 @@ class ConfigurationSpec extends ObjectBehavior
         $this->hasSection('supervisord')->shouldReturn(true);
     }
 
-    function it_should_allow_to_remove_a_section(Section $supervisord)
+    function it_removes_a_section(Section $supervisord)
     {
         $supervisord->getName()->willReturn('supervisord');
 
@@ -47,7 +47,7 @@ class ConfigurationSpec extends ObjectBehavior
         $this->hasSection('supervisord')->shouldReturn(false);
     }
 
-    function it_should_allow_to_get_sections(Section $supervisord)
+    function it_returns_sections(Section $supervisord)
     {
         $supervisord->getName()->willReturn('supervisord');
 
@@ -58,7 +58,7 @@ class ConfigurationSpec extends ObjectBehavior
         $this->getSections()->shouldReturn(['supervisord' => $supervisord]);
     }
 
-    function it_should_allow_to_add_sections(Section $supervisord)
+    function it_accepts_sections(Section $supervisord)
     {
         $supervisord->getName()->willReturn('supervisord');
 
@@ -67,7 +67,7 @@ class ConfigurationSpec extends ObjectBehavior
         $this->getSections()->shouldReturn(['supervisord' => $supervisord]);
     }
 
-    function it_should_allow_to_reset(Section $supervisord)
+    function it_resets_sections(Section $supervisord)
     {
         $supervisord->getName()->willReturn('supervisord');
 
