@@ -82,7 +82,7 @@ class Configuration
     /**
      * Returns all sections
      *
-     * @return array
+     * @return Section[]
      */
     public function getSections()
     {
