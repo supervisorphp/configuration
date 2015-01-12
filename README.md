@@ -2,7 +2,7 @@
 
 [![Latest Version](https://img.shields.io/github/release/indigophp/supervisor-configuration.svg?style=flat-square)](https://github.com/indigophp/supervisor-configuration/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Build Status](https://img.shields.io/travis/indigophp/supervisor-configuration/develop.svg?style=flat-square)](https://travis-ci.org/indigophp/supervisor-configuration)
+[![Build Status](https://img.shields.io/travis/indigophp/supervisor-configuration.svg?style=flat-square)](https://travis-ci.org/indigophp/supervisor-configuration)
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/indigophp/supervisor-configuration.svg?style=flat-square)](https://scrutinizer-ci.com/g/indigophp/supervisor-configuration)
 [![Quality Score](https://img.shields.io/scrutinizer/g/indigophp/supervisor-configuration.svg?style=flat-square)](https://scrutinizer-ci.com/g/indigophp/supervisor-configuration)
 [![HHVM Status](https://img.shields.io/hhvm/indigophp/supervisor-configuration.svg?style=flat-square)](http://hhvm.h4cc.de/package/indigophp/supervisor-configuration)
