@@ -47,7 +47,9 @@ class Filesystem extends File
             throw new ParsingFailed(sprintf('File "%s" not found', $this->file));
         }
 
-        $fileContents = $this->filesystem->read($this->file);
+        if (!$fileContents = $this->filesystem->read($this->file)) {
+            throw new ParsingFailed(sprintf('Reading file "%s" failed', $this->file));
+        }
 
         $parser = new Text($fileContents);
 

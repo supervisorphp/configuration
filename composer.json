@@ -3,7 +3,7 @@
     "description": "Manage Supervisor configuration in PHP",
     "license": "MIT",
     "keywords": ["supervisor", "configuration"],
-    "homepage": "https://indigophp.com",
+    "homepage": "https://supervisorphp.com",
     "authors": [
         {
             "name": "Márk Sági-Kazár",

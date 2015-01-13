@@ -41,4 +41,11 @@ class FilesystemSpec extends ObjectBehavior
 
         $this->shouldThrow('Supervisor\Exception\ParsingFailed')->duringParse();
     }
+
+    function it_throws_an_exception_when_cannot_read_file_given(Flysystem $filesystem)
+    {
+        $filesystem->read('supervisord.conf')->willReturn(false);
+
+        $this->shouldThrow('Supervisor\Exception\ParsingFailed')->duringParse();
+    }
 }
