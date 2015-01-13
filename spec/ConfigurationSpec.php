@@ -1,15 +1,15 @@
 <?php
 
-namespace spec\Indigo\Supervisor;
+namespace spec\Supervisor;
 
-use Indigo\Supervisor\Configuration\Section;
+use Supervisor\Configuration\Section;
 use PhpSpec\ObjectBehavior;
 
 class ConfigurationSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('Indigo\Supervisor\Configuration');
+        $this->shouldHaveType('Supervisor\Configuration');
     }
 
     function it_returns_a_section(Section $supervisord)

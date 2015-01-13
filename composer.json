@@ -1,5 +1,5 @@
 {
-    "name": "indigophp/supervisor-configuration",
+    "name": "supervisorphp/configuration",
     "description": "Manage Supervisor configuration in PHP",
     "license": "MIT",
     "keywords": ["supervisor", "configuration"],
@@ -24,13 +24,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Indigo\\Supervisor\\": "src/"
+            "Supervisor\\": "src/"
         },
         "files": ["src/functions.php"]
     },
     "autoload-dev": {
         "psr-4": {
-            "Indigo\\Supervisor\\Stub\\": "stub/"
+            "Supervisor\\Stub\\": "stub/"
         }
     },
     "extra": {

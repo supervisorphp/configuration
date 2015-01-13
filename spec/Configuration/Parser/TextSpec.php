@@ -1,8 +1,8 @@
 <?php
 
-namespace spec\Indigo\Supervisor\Configuration\Parser;
+namespace spec\Supervisor\Configuration\Parser;
 
-use Indigo\Supervisor\Configuration;
+use Supervisor\Configuration;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -15,12 +15,12 @@ class TextSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Indigo\Supervisor\Configuration\Parser\Text');
+        $this->shouldHaveType('Supervisor\Configuration\Parser\Text');
     }
 
     function it_is_a_parser()
     {
-        $this->shouldImplement('Indigo\Supervisor\Configuration\Parser');
+        $this->shouldImplement('Supervisor\Configuration\Parser');
     }
 
     function it_parses_configuration(Configuration $configuration)
@@ -34,13 +34,13 @@ class TextSpec extends ObjectBehavior
     {
         $configuration = $this->parse();
 
-        $configuration->shouldHaveType('Indigo\Supervisor\Configuration');
+        $configuration->shouldHaveType('Supervisor\Configuration');
     }
 
     function it_throws_an_exception_when_parsing_failed()
     {
         $this->beConstructedWith('?{}|&~![()^"');
 
-        $this->shouldThrow('Indigo\Supervisor\Exception\ParsingFailed')->duringParse();
+        $this->shouldThrow('Supervisor\Exception\ParsingFailed')->duringParse();
     }
 }

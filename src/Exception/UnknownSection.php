@@ -1,15 +1,15 @@
 <?php
 
 /*
- * This file is part of the Indigo SUpervisor package.
+ * This file is part of the Supervisor Configuration package.
  *
- * (c) Indigo Development Team
+ * (c) Márk Sági-Kazár <mark.sagikazar@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Indigo\Supervisor\Exception;
+namespace Supervisor\Exception;
 
 /**
  * Thrown when an invalid section is passed to the Configuration parser

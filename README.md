@@ -1,13 +1,13 @@
-# Indigo Supervisor Configuration
+# Supervisor Configuration
 
-[![Latest Version](https://img.shields.io/github/release/indigophp/supervisor-configuration.svg?style=flat-square)](https://github.com/indigophp/supervisor-configuration/releases)
+[![Latest Version](https://img.shields.io/github/release/supervisorphp/configuration.svg?style=flat-square)](https://github.com/supervisorphp/configuration/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Build Status](https://img.shields.io/travis/indigophp/supervisor-configuration.svg?style=flat-square)](https://travis-ci.org/indigophp/supervisor-configuration)
-[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/indigophp/supervisor-configuration.svg?style=flat-square)](https://scrutinizer-ci.com/g/indigophp/supervisor-configuration)
-[![Quality Score](https://img.shields.io/scrutinizer/g/indigophp/supervisor-configuration.svg?style=flat-square)](https://scrutinizer-ci.com/g/indigophp/supervisor-configuration)
-[![HHVM Status](https://img.shields.io/hhvm/indigophp/supervisor-configuration.svg?style=flat-square)](http://hhvm.h4cc.de/package/indigophp/supervisor-configuration)
-[![Total Downloads](https://img.shields.io/packagist/dt/indigophp/supervisor-configuration.svg?style=flat-square)](https://packagist.org/packages/indigophp/supervisor-configuration)
-[![Dependency Status](https://img.shields.io/versioneye/d/php/indigophp:supervisor-configuration.svg?style=flat-square)](https://www.versioneye.com/php/indigophp:supervisor-configuration)
+[![Build Status](https://img.shields.io/travis/supervisorphp/configuration.svg?style=flat-square)](https://travis-ci.org/supervisorphp/configuration)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/supervisorphp/configuration.svg?style=flat-square)](https://scrutinizer-ci.com/g/supervisorphp/configuration)
+[![Quality Score](https://img.shields.io/scrutinizer/g/supervisorphp/configuration.svg?style=flat-square)](https://scrutinizer-ci.com/g/supervisorphp/configuration)
+[![HHVM Status](https://img.shields.io/hhvm/supervisorphp/configuration.svg?style=flat-square)](http://hhvm.h4cc.de/package/supervisorphp/configuration)
+[![Total Downloads](https://img.shields.io/packagist/dt/supervisorphp/configuration.svg?style=flat-square)](https://packagist.org/packages/supervisorphp/configuration)
+[![Dependency Status](https://img.shields.io/versioneye/d/php/supervisorphp:configuration.svg?style=flat-square)](https://www.versioneye.com/php/supervisorphp:configuration)
 
 **Manage Supervisor configuration in PHP.**
 
@@ -17,7 +17,7 @@
 Via Composer
 
 ``` bash
-$ composer require indigophp/supervisor-configuration
+$ composer require supervisorphp/configuration
 ```
 
 ## Usage
@@ -25,10 +25,10 @@ $ composer require indigophp/supervisor-configuration
 Create a configuration using the builder.
 
 ``` php
-use Indigo\Supervisor\Configuration;
-use Indigo\Supervisor\Configuration\Section\Supervisord;
-use Indigo\Supervisor\Configuration\Section\Program;
-use Indigo\Supervisor\Configuration\Renderer;
+use Supervisor\Configuration;
+use Supervisor\Configuration\Section\Supervisord;
+use Supervisor\Configuration\Section\Program;
+use Supervisor\Configuration\Renderer;
 
 $config = new Configuration;
 $renderer = new Renderer;
@@ -69,8 +69,8 @@ $section = new Program('test', ['command' => 'cat']);
 You can parse your existing configuration, and use it as a `Configuration` object.
 
 ``` php
-use Indigo\Supervisor\Configuration;
-use Indigo\Supervisor\Configuration\Parser\File;
+use Supervisor\Configuration;
+use Supervisor\Configuration\Parser\File;
 
 $parser = new File('/etc/supervisor/supervisord.conf');
 
@@ -92,10 +92,10 @@ Available parsers:
 You can use `Writer`s to write configuration to various destinations.
 
 ``` php
-use Indigo\Supervisor\Configuration;
-use Indigo\Supervisor\Configuration\Writer\File;
+use Supervisor\Configuration;
+use Supervisor\Configuration\Writer\File;
 
-// As a second parameter you can optionally pass an instance of Indigo\Supervisor\Configuration\Renderer
+// As a second parameter you can optionally pass an instance of Supervisor\Configuration\Renderer
 $writer = new File('/etc/supervisor/supervisord.conf');
 
 $configuration = new Configuration;
@@ -128,7 +128,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 ## Credits
 
 - [Márk Sági-Kazár](https://github.com/sagikazarmark)
-- [All Contributors](https://github.com/indigophp/supervisor-configuration/contributors)
+- [All Contributors](https://github.com/supervisorphp/configuration/contributors)
 
 
 ## License

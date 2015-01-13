@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\Indigo\Supervisor\Configuration;
+namespace spec\Supervisor\Configuration;
 
 use PhpSpec\ObjectBehavior;
 
@@ -8,7 +8,7 @@ class UtilSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('Indigo\Supervisor\Configuration\Util');
+        $this->shouldHaveType('Supervisor\Configuration\Util');
     }
 
     function it_tests_a_byte_integer_representation()

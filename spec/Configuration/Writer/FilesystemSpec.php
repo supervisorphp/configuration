@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\Indigo\Supervisor\Configuration\Writer;
+namespace spec\Supervisor\Configuration\Writer;
 
-use Indigo\Supervisor\Configuration;
-use Indigo\Supervisor\Configuration\Renderer;
+use Supervisor\Configuration;
+use Supervisor\Configuration\Renderer;
 use League\Flysystem\Filesystem as Flysystem;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -17,12 +17,12 @@ class FilesystemSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Indigo\Supervisor\Configuration\Writer\Filesystem');
+        $this->shouldHaveType('Supervisor\Configuration\Writer\Filesystem');
     }
 
     function it_is_a_writer()
     {
-        $this->shouldImplement('Indigo\Supervisor\Configuration\Writer');
+        $this->shouldImplement('Supervisor\Configuration\Writer');
     }
 
     function it_writes_a_configuration_to_a_file(Flysystem $filesystem, Renderer $renderer, Configuration $configuration)
@@ -40,6 +40,6 @@ class FilesystemSpec extends ObjectBehavior
         $filesystem->put('file', 'contents')->willReturn(false);
         $this->beConstructedWith($filesystem, 'file', $renderer);
 
-        $this->shouldThrow('Indigo\Supervisor\Exception\WrittingFailed')->duringWrite($configuration);
+        $this->shouldThrow('Supervisor\Exception\WrittingFailed')->duringWrite($configuration);
     }
 }

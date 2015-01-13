@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\Indigo\Supervisor\Configuration\Writer;
+namespace spec\Supervisor\Configuration\Writer;
 
-use Indigo\Supervisor\Configuration;
-use Indigo\Supervisor\Configuration\Renderer;
+use Supervisor\Configuration;
+use Supervisor\Configuration\Renderer;
 use PhpSpec\ObjectBehavior;
 
 class FileSpec extends ObjectBehavior
@@ -15,12 +15,12 @@ class FileSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Indigo\Supervisor\Configuration\Writer\File');
+        $this->shouldHaveType('Supervisor\Configuration\Writer\File');
     }
 
     function it_is_a_writer()
     {
-        $this->shouldImplement('Indigo\Supervisor\Configuration\Writer');
+        $this->shouldImplement('Supervisor\Configuration\Writer');
     }
 
     function it_writes_a_configuration_to_a_file(Renderer $renderer, Configuration $configuration)
@@ -36,6 +36,6 @@ class FileSpec extends ObjectBehavior
         $renderer->render($configuration)->willReturn('contents');
         $this->beConstructedWith('', $renderer);
 
-        $this->shouldThrow('Indigo\Supervisor\Exception\WrittingFailed')->duringWrite($configuration);
+        $this->shouldThrow('Supervisor\Exception\WrittingFailed')->duringWrite($configuration);
     }
 }

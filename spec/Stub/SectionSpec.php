@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\Indigo\Supervisor\Stub;
+namespace spec\Supervisor\Stub;
 
 use PhpSpec\ObjectBehavior;
 
@@ -13,13 +13,13 @@ class SectionSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Indigo\Supervisor\Stub\Section');
-        $this->shouldHaveType('Indigo\Supervisor\Configuration\Section\Base');
+        $this->shouldHaveType('Supervisor\Stub\Section');
+        $this->shouldHaveType('Supervisor\Configuration\Section\Base');
     }
 
     function it_is_a_section()
     {
-        $this->shouldImplement('Indigo\Supervisor\Configuration\Section');
+        $this->shouldImplement('Supervisor\Configuration\Section');
     }
 
     function it_returns_a_property()

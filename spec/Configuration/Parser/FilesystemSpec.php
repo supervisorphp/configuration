@@ -1,8 +1,8 @@
 <?php
 
-namespace spec\Indigo\Supervisor\Configuration\Parser;
+namespace spec\Supervisor\Configuration\Parser;
 
-use Indigo\Supervisor\Configuration;
+use Supervisor\Configuration;
 use League\Flysystem\Filesystem as Flysystem;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -18,12 +18,12 @@ class FilesystemSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Indigo\Supervisor\Configuration\Parser\Filesystem');
+        $this->shouldHaveType('Supervisor\Configuration\Parser\Filesystem');
     }
 
     function it_is_a_parser()
     {
-        $this->shouldImplement('Indigo\Supervisor\Configuration\Parser');
+        $this->shouldImplement('Supervisor\Configuration\Parser');
     }
 
     function it_parses_configuration(Flysystem $filesystem, Configuration $configuration)
@@ -39,6 +39,6 @@ class FilesystemSpec extends ObjectBehavior
         $filesystem->has(null)->willReturn(false);
         $this->beConstructedWith($filesystem, null);
 
-        $this->shouldThrow('Indigo\Supervisor\Exception\ParsingFailed')->duringParse();
+        $this->shouldThrow('Supervisor\Exception\ParsingFailed')->duringParse();
     }
 }

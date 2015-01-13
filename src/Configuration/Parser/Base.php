@@ -1,19 +1,19 @@
 <?php
 
 /*
- * This file is part of the Indigo Supervisor package.
+ * This file is part of the Supervisor Configuration package.
  *
- * (c) Indigo Development Team
+ * (c) Márk Sági-Kazár <mark.sagikazar@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Indigo\Supervisor\Configuration\Parser;
+namespace Supervisor\Configuration\Parser;
 
-use Indigo\Supervisor\Configuration\Parser;
-use Indigo\Supervisor\Configuration;
-use Indigo\Supervisor\Exception\UnknownSection;
+use Supervisor\Configuration\Parser;
+use Supervisor\Configuration;
+use Supervisor\Exception\UnknownSection;
 
 /**
  * Provides common functionality to parsers
@@ -28,16 +28,16 @@ abstract class Base implements Parser
      * @var array
      */
     protected $sectionMap = [
-        'eventlistener'    => 'Indigo\Supervisor\Configuration\Section\EventListener',
-        'fcgi-program'     => 'Indigo\Supervisor\Configuration\Section\FcgiProgram',
-        'group'            => 'Indigo\Supervisor\Configuration\Section\Group',
-        'include'          => 'Indigo\Supervisor\Configuration\Section\Includes',
-        'inet_http_server' => 'Indigo\Supervisor\Configuration\Section\InetHttpServer',
-        'program'          => 'Indigo\Supervisor\Configuration\Section\Program',
-        'supervisorctl'    => 'Indigo\Supervisor\Configuration\Section\Supervisorctl',
-        'supervisord'      => 'Indigo\Supervisor\Configuration\Section\Supervisord',
-        'unix_http_server' => 'Indigo\Supervisor\Configuration\Section\UnixHttpServer',
-        'rpcinterface'     => 'Indigo\Supervisor\Configuration\Section\RpcInterface',
+        'eventlistener'    => 'Supervisor\Configuration\Section\EventListener',
+        'fcgi-program'     => 'Supervisor\Configuration\Section\FcgiProgram',
+        'group'            => 'Supervisor\Configuration\Section\Group',
+        'include'          => 'Supervisor\Configuration\Section\Includes',
+        'inet_http_server' => 'Supervisor\Configuration\Section\InetHttpServer',
+        'program'          => 'Supervisor\Configuration\Section\Program',
+        'supervisorctl'    => 'Supervisor\Configuration\Section\Supervisorctl',
+        'supervisord'      => 'Supervisor\Configuration\Section\Supervisord',
+        'unix_http_server' => 'Supervisor\Configuration\Section\UnixHttpServer',
+        'rpcinterface'     => 'Supervisor\Configuration\Section\RpcInterface',
     ];
 
     /**

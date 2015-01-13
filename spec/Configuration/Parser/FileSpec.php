@@ -1,8 +1,8 @@
 <?php
 
-namespace spec\Indigo\Supervisor\Configuration\Parser;
+namespace spec\Supervisor\Configuration\Parser;
 
-use Indigo\Supervisor\Configuration;
+use Supervisor\Configuration;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -15,12 +15,12 @@ class FileSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Indigo\Supervisor\Configuration\Parser\File');
+        $this->shouldHaveType('Supervisor\Configuration\Parser\File');
     }
 
     function it_is_a_parser()
     {
-        $this->shouldImplement('Indigo\Supervisor\Configuration\Parser');
+        $this->shouldImplement('Supervisor\Configuration\Parser');
     }
 
     function it_parses_configuration(Configuration $configuration)
@@ -34,20 +34,20 @@ class FileSpec extends ObjectBehavior
     {
         $configuration = $this->parse();
 
-        $configuration->shouldHaveType('Indigo\Supervisor\Configuration');
+        $configuration->shouldHaveType('Supervisor\Configuration');
     }
 
     function it_throws_an_exception_when_invalid_file_given()
     {
         $this->beConstructedWith('/invalid');
 
-        $this->shouldThrow('Indigo\Supervisor\Exception\ParsingFailed')->duringParse();
+        $this->shouldThrow('Supervisor\Exception\ParsingFailed')->duringParse();
     }
 
     function it_throws_an_exception_when_parsing_failed()
     {
         $this->beConstructedWith(__DIR__.'/../../../resources/invalid.conf');
 
-        $this->shouldThrow('Indigo\Supervisor\Exception\ParsingFailed')->duringParse();
+        $this->shouldThrow('Supervisor\Exception\ParsingFailed')->duringParse();
     }
 }
