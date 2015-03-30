@@ -45,7 +45,7 @@ class File extends RendererAware
     {
         $fileContents = $this->renderer->render($configuration);
 
-        if (!$result = $this->writeFile($fileContents)) {
+        if (false === $result = $this->writeFile($fileContents)) {
             throw new WrittingFailed(sprintf('Cannot write configuration into file %s', $this->file));
         }
 
