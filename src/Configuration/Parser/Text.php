@@ -44,7 +44,7 @@ class Text extends Base
         }
 
         // Suppress error to handle it
-        if (!$ini = @parse_ini_string($this->text, true, INI_SCANNER_RAW)) {
+        if (false === $ini = @parse_ini_string($this->text, true, INI_SCANNER_RAW)) {
             throw new ParsingFailed('Given data cannot be parsed as INI string');
         }
 
