@@ -48,7 +48,7 @@ class File extends Base
         }
 
         // Suppress error to handle it
-        if (!$ini = @parse_ini_file($this->file, true, INI_SCANNER_RAW)) {
+        if (false === $ini = @parse_ini_file($this->file, true, INI_SCANNER_RAW)) {
             throw new ParsingFailed(sprintf('File "%s" cannot be parsed as INI', $this->file));
         }
 
