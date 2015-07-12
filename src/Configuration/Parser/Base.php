@@ -83,7 +83,7 @@ abstract class Base implements Parser
         $sections = [];
 
         foreach ($ini as $name => $section) {
-            $section = $this->parseSection($name, $section);
+            $section = $this->parseSection($name, array_map('trim', $section));
             $sections[] = $section;
         }
 
