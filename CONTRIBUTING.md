@@ -1,66 +1,43 @@
 # Contributing
 
-Contributions are **welcome** and will be fully **credited**.
-
-We accept contributions via Pull Requests on [Github](/../../).
+Thank you for contributing to this project!
 
 
-## Pull Requests
+## Forms of contribution
 
-- **[PSR-2 Coding Standard](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)** - The easiest way to apply the conventions is to install [PHP Code Sniffer](http://pear.php.net/package/PHP_CodeSniffer).
+You can contribute several ways, here are some:
 
-- **Add tests!** - Your patch won't be accepted if it doesn't have tests.
 
+### Bug reports
+
+If you find a bug, please submit an issue. Try to be as detailed as possible to help us fix the bug. Here is a list of possible information:
+
+ - Precise description of the bug
+ - Details of your environment (for example: OS, PHP version, installed extensions)
+ - Backtrace which might help identifing the bug
+
+
+### Feature requests
+
+If you think a feature is missing, please submit an issue. Try to explain your use case as fully as possible to help us understand why you think the feature should be added. If you have any resources (for example where you saw that feature) you can link them as well.
+
+
+### Security reports
+
+If you discover any security related issues, please contact us at [security@indigophp.com](mailto:security@supervisorphp.com) instead of submitting an issue on Github. This allows us to fix the issue and release a security hotfix without publicly disclosing the vulnerability.
+
+
+### Pull Requests
+
+If you want to fix a bug or implement a feature yourself, you can send a Pull Request.
+
+Please keep the following guidelines in mind:
+
+- **Follow [PSR-2 Coding Standard](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)**
+- **Add tests!** - Our aim is at least 80% coverage. Please see the [README](README.md) and [composer.json](composer.json) for testing framework and command.
 - **Document any change in behaviour** - Make sure the README and any other relevant documentation are kept up-to-date.
-
 - **Consider our release cycle** - We try to follow semver. Randomly breaking public APIs is not an option.
-
 - **Create topic branches** - Don't ask us to pull from your master branch.
-
 - **One pull request per feature** - If you want to do more than one thing, send multiple pull requests.
-
 - **Send coherent history** - Make sure each individual commit in your pull request is meaningful. If you had to make multiple intermediate commits while developing, please squash them before submitting.
-
-- **Sign your work** - Sign all your commits to let us know you certify the [Developer's Certificate of Origin](#developers-certificate-of-origin).
-
-
-## Developer's Certificate of Origin
-
-By contributing you certify the below:
-```
-Developer's Certificate of Origin 1.1
-
-By making a contribution to this project, I certify that:
-
-(a) The contribution was created in whole or in part by me and I
-    have the right to submit it under the open source license
-    indicated in the file; or
-
-(b) The contribution is based upon previous work that, to the best
-    of my knowledge, is covered under an appropriate open source
-    license and I have the right under that license to submit that
-    work with modifications, whether created in whole or in part
-    by me, under the same open source license (unless I am
-    permitted to submit under a different license), as indicated
-    in the file; or
-
-(c) The contribution was provided directly to me by some other
-    person who certified (a), (b) or (c) and I have not modified
-    it.
-
-(d) I understand and agree that this project and the contribution
-    are public and that a record of the contribution (including all
-    personal information I submit with it, including my sign-off) is
-    maintained indefinitely and may be redistributed consistent with
-    this project or the open source license(s) involved.
-```
-
-
-## Testing
-
-``` bash
-$ phpspec run
-```
-
-
-**Happy coding**!
+- **Clean commit messages** - Please write your commit messages in the imperative and follow the [guidelines](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html) for clear and concise messages.

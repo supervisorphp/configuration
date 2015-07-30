@@ -5,9 +5,7 @@
 [![Build Status](https://img.shields.io/travis/supervisorphp/configuration.svg?style=flat-square)](https://travis-ci.org/supervisorphp/configuration)
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/supervisorphp/configuration.svg?style=flat-square)](https://scrutinizer-ci.com/g/supervisorphp/configuration)
 [![Quality Score](https://img.shields.io/scrutinizer/g/supervisorphp/configuration.svg?style=flat-square)](https://scrutinizer-ci.com/g/supervisorphp/configuration)
-[![HHVM Status](https://img.shields.io/hhvm/supervisorphp/configuration.svg?style=flat-square)](http://hhvm.h4cc.de/package/supervisorphp/configuration)
 [![Total Downloads](https://img.shields.io/packagist/dt/supervisorphp/configuration.svg?style=flat-square)](https://packagist.org/packages/supervisorphp/configuration)
-[![Dependency Status](https://img.shields.io/versioneye/d/php/supervisorphp:configuration.svg?style=flat-square)](https://www.versioneye.com/php/supervisorphp:configuration)
 
 **Manage Supervisor configuration in PHP.**
 
@@ -116,7 +114,7 @@ You can find detailed info about properties for each section here:
 ## Testing
 
 ``` bash
-$ phpspec run
+$ composer test
 ```
 
 

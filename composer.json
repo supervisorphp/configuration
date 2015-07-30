@@ -12,12 +12,12 @@
     ],
     "require": {
         "php": ">=5.4",
-        "symfony/options-resolver": "~2.6"
+        "symfony/options-resolver": "^2.6"
     },
     "require-dev": {
-        "league/flysystem": "~1.0",
-        "phpspec/phpspec": "~2.1",
-        "henrikbjorn/phpspec-code-coverage" : "~1.0"
+        "league/flysystem": "^1.0",
+        "phpspec/phpspec": "^2.1",
+        "henrikbjorn/phpspec-code-coverage" : "^1.0"
     },
     "suggest": {
         "league/flysystem": "Used by Filesystem Parsers/Writers"
@@ -32,6 +32,10 @@
         "psr-4": {
             "Supervisor\\Stub\\": "stub/"
         }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpspec run",
+        "test-ci": "vendor/bin/phpspec run -c phpspec.yml.ci"
     },
     "extra": {
         "branch-alias": {
