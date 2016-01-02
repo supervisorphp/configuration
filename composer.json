@@ -12,11 +12,11 @@
     ],
     "require": {
         "php": ">=5.4",
-        "symfony/options-resolver": "^2.6"
+        "symfony/options-resolver": "^2.6|^3.0"
     },
     "require-dev": {
         "league/flysystem": "^1.0",
-        "phpspec/phpspec": "^2.1",
+        "phpspec/phpspec": "^2.4",
         "henrikbjorn/phpspec-code-coverage" : "^1.0"
     },
     "suggest": {
