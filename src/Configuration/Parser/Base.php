@@ -3,7 +3,6 @@
 namespace Supervisor\Configuration\Parser;
 
 use Supervisor\Configuration\Parser;
-use Supervisor\Configuration;
 use Supervisor\Exception\UnknownSection;
 
 /**
