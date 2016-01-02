@@ -16,7 +16,7 @@ use Supervisor\Configuration\Renderer;
 use Supervisor\Exception\WrittingFailed;
 
 /**
- * Writes a Configuration into a file
+ * Writes a Configuration into a file.
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
@@ -53,11 +53,11 @@ class File extends RendererAware
     }
 
     /**
-     * Write contents into file
+     * Write contents into file.
      *
      * @param string $contents
      *
-     * @return integer|boolean
+     * @return int|bool
      */
     protected function writeFile($contents)
     {

@@ -15,14 +15,14 @@ use Supervisor\Configuration;
 use Supervisor\Exception\WrittingFailed;
 
 /**
- * Writes configuration to various destinations
+ * Writes configuration to various destinations.
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
 interface Writer
 {
     /**
-     * Writes a Configuration
+     * Writes a Configuration.
      *
      * @param Configuration $configuration
      *

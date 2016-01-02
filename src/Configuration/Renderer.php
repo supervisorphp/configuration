@@ -14,14 +14,14 @@ namespace Supervisor\Configuration;
 use Supervisor\Configuration;
 
 /**
- * Renders a configuration
+ * Renders a configuration.
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
 class Renderer
 {
     /**
-     * Renders a configuration
+     * Renders a configuration.
      *
      * @param Configuration $configuration
      *
@@ -39,7 +39,7 @@ class Renderer
     }
 
     /**
-     * Renders a section
+     * Renders a section.
      *
      * @param Section $section
      *
@@ -61,7 +61,7 @@ class Renderer
     }
 
     /**
-     * Normalize value to valid INI format
+     * Normalize value to valid INI format.
      *
      * @param mixed $value
      *

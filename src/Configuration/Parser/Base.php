@@ -16,14 +16,14 @@ use Supervisor\Configuration;
 use Supervisor\Exception\UnknownSection;
 
 /**
- * Provides common functionality to parsers
+ * Provides common functionality to parsers.
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
 abstract class Base implements Parser
 {
     /**
-     * Available sections
+     * Available sections.
      *
      * @var array
      */
@@ -41,7 +41,7 @@ abstract class Base implements Parser
     ];
 
     /**
-     * Adds or overrides default section map
+     * Adds or overrides default section map.
      *
      * @param string $section
      * @param string $className
@@ -52,7 +52,7 @@ abstract class Base implements Parser
     }
 
     /**
-     * Finds a section class by name
+     * Finds a section class by name.
      *
      * @param string $section
      *
@@ -70,7 +70,7 @@ abstract class Base implements Parser
     }
 
     /**
-     * Parses an INI array
+     * Parses an INI array.
      *
      * Sections must be included
      *
@@ -91,7 +91,7 @@ abstract class Base implements Parser
     }
 
     /**
-     * Parses an individual section
+     * Parses an individual section.
      *
      * @param string $name
      * @param array  $section Array representation of section

@@ -16,7 +16,7 @@ use Supervisor\Configuration\Renderer;
 use League\Flysystem\Filesystem as Flysystem;
 
 /**
- * Write a configuration into any filesystem
+ * Write a configuration into any filesystem.
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
@@ -40,7 +40,7 @@ class Filesystem extends File
     }
 
     /**
-     * {@inheritdocs}
+     * {@inheritdoc}
      */
     protected function writeFile($contents)
     {

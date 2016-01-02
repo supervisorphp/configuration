@@ -12,14 +12,14 @@
 namespace Supervisor\Configuration\Section;
 
 /**
- * Section name contains identifier
+ * Section name contains identifier.
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
 abstract class Named extends Base
 {
     /**
-     * Predefined section name
+     * Predefined section name.
      *
      * @var string
      */
@@ -31,7 +31,7 @@ abstract class Named extends Base
      */
     public function __construct($name, array $properties = [])
     {
-        $this->name = $this->sectionName . ':' . trim($name);
+        $this->name = $this->sectionName.':'.trim($name);
 
         parent::__construct($properties);
     }

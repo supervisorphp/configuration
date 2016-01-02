@@ -14,7 +14,7 @@ namespace Supervisor\Configuration\Section;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Event Listener section
+ * Event Listener section.
  *
  * @link http://supervisord.org/configuration.html#eventlistener-x-section-settings
  *

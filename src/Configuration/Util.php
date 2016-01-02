@@ -12,18 +12,18 @@
 namespace Supervisor\Configuration;
 
 /**
- * Util class for configuration
+ * Util class for configuration.
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
 class Util
 {
     /**
-     * Checks whether a given value is a valid byte value
+     * Checks whether a given value is a valid byte value.
      *
-     * @param string|integer $value
+     * @param string|int $value
      *
-     * @return boolean
+     * @return bool
      */
     public static function isByte($value)
     {

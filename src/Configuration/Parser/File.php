@@ -15,7 +15,7 @@ use Supervisor\Configuration;
 use Supervisor\Exception\ParsingFailed;
 
 /**
- * Parses a file
+ * Parses a file.
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
@@ -44,7 +44,7 @@ class File extends Base
         }
 
         if (is_null($configuration)) {
-            $configuration = new Configuration;
+            $configuration = new Configuration();
         }
 
         // Suppress error to handle it

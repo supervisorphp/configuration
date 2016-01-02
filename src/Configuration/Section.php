@@ -12,14 +12,14 @@
 namespace Supervisor\Configuration;
 
 /**
- * Properties are grouped into sections
+ * Properties are grouped into sections.
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
 interface Section
 {
     /**
-     * Returns the section name
+     * Returns the section name.
      *
      * Should be set explicitly for single sections (eg. supervisord)
      *
@@ -28,7 +28,7 @@ interface Section
     public function getName();
 
     /**
-     * Returns a specific property
+     * Returns a specific property.
      *
      * @param string $key
      *
@@ -37,7 +37,7 @@ interface Section
     public function getProperty($key);
 
     /**
-     * Sets a specific property
+     * Sets a specific property.
      *
      * @param string $key
      * @param mixed  $value
@@ -45,14 +45,14 @@ interface Section
     public function setProperty($key, $value);
 
     /**
-     * Returns the properties as an array
+     * Returns the properties as an array.
      *
      * @return array
      */
     public function getProperties();
 
     /**
-     * Sets an array of properties
+     * Sets an array of properties.
      *
      * @param array $properties
      */

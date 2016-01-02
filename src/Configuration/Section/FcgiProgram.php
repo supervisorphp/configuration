@@ -14,7 +14,7 @@ namespace Supervisor\Configuration\Section;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Fcgi Program section
+ * Fcgi Program section.
  *
  * @link http://supervisord.org/configuration.html#fcgi-program-x-section-settings
  *

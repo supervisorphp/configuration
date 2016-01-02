@@ -15,7 +15,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\Options;
 
 /**
- * Include section
+ * Include section.
  *
  * @link http://supervisord.org/configuration.html#include-section-settings
  *

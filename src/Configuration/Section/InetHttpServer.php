@@ -15,7 +15,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\Options;
 
 /**
- * Inet HTTP Server section
+ * Inet HTTP Server section.
  *
  * @link http://supervisord.org/configuration.html#inet-http-server-section-settings
  *

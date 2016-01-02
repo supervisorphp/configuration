@@ -14,7 +14,7 @@ namespace Supervisor\Configuration\Section;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * RPC Interface section
+ * RPC Interface section.
  *
  * @link http://supervisord.org/configuration.html#rpcinterface-x-section-settings
  *

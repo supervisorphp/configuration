@@ -14,7 +14,7 @@ namespace Supervisor\Configuration\Section;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Supervisorctl section
+ * Supervisorctl section.
  *
  * @link http://supervisord.org/configuration.html#supervisorctl-section-settings
  *

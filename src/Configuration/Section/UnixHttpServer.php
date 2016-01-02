@@ -14,7 +14,7 @@ namespace Supervisor\Configuration\Section;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Unix HTTP section
+ * Unix HTTP section.
  *
  * @link http://supervisord.org/configuration.html#unix-http-server-section-settings
  *

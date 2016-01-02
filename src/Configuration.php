@@ -14,21 +14,21 @@ namespace Supervisor;
 use Supervisor\Configuration\Section;
 
 /**
- * Supervisor configuration parser and generator
+ * Supervisor configuration parser and generator.
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
 class Configuration
 {
     /**
-     * Config sections
+     * Config sections.
      *
      * @var Section[]
      */
     protected $sections = [];
 
     /**
-     * Returns a specific section by name
+     * Returns a specific section by name.
      *
      * @param string $section
      *
@@ -42,11 +42,11 @@ class Configuration
     }
 
     /**
-     * Checks whether section exists in Configuration
+     * Checks whether section exists in Configuration.
      *
      * @param string $section
      *
-     * @return boolean
+     * @return bool
      */
     public function hasSection($section)
     {
@@ -54,7 +54,7 @@ class Configuration
     }
 
     /**
-     * Adds or overrides a section
+     * Adds or overrides a section.
      *
      * @param Section $section
      */
@@ -64,11 +64,11 @@ class Configuration
     }
 
     /**
-     * Removes a section by name
+     * Removes a section by name.
      *
      * @param string $section
      *
-     * @return boolean
+     * @return bool
      */
     public function removeSection($section)
     {
@@ -80,7 +80,7 @@ class Configuration
     }
 
     /**
-     * Returns all sections
+     * Returns all sections.
      *
      * @return Section[]
      */
@@ -90,7 +90,7 @@ class Configuration
     }
 
     /**
-     * Adds or overrides an array sections
+     * Adds or overrides an array sections.
      *
      * @param Section[] $sections
      */
@@ -102,7 +102,7 @@ class Configuration
     }
 
     /**
-     * Resets Configuration
+     * Resets Configuration.
      */
     public function reset()
     {

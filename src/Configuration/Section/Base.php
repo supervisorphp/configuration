@@ -16,14 +16,14 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\Options;
 
 /**
- * Abstract section with some basic implementation
+ * Abstract section with some basic implementation.
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
 abstract class Base implements Section
 {
     /**
-     * Name of section (eg. supervisord or program:test)
+     * Name of section (eg. supervisord or program:test).
      *
      * @var string
      */
@@ -93,7 +93,7 @@ abstract class Base implements Section
     }
 
     /**
-     * Resolves properties
+     * Resolves properties.
      *
      * @param array $properties
      *
@@ -104,7 +104,7 @@ abstract class Base implements Section
         $class = get_class($this);
 
         if (!isset(self::$resolversByClass[$class])) {
-            self::$resolversByClass[$class] = new OptionsResolver;
+            self::$resolversByClass[$class] = new OptionsResolver();
             $this->configureProperties(self::$resolversByClass[$class]);
         }
 
@@ -118,13 +118,13 @@ abstract class Base implements Section
 
     /**
      * Values returned from INI parser are always string
-     * As a workaround to this problem you can set various normalizers to optimize the values
+     * As a workaround to this problem you can set various normalizers to optimize the values.
      *
      * Note: The property should be defined first
      */
 
     /**
-     * Configures an integer property for OptionsResolver
+     * Configures an integer property for OptionsResolver.
      *
      * @param string          $property
      * @param OptionsResolver $resolver
@@ -139,7 +139,7 @@ abstract class Base implements Section
     }
 
     /**
-     * Configures an array property for OptionsResolver
+     * Configures an array property for OptionsResolver.
      *
      * @param string          $property
      * @param OptionsResolver $resolver
@@ -154,7 +154,7 @@ abstract class Base implements Section
     }
 
     /**
-     * Configures a boolean property for OptionsResolver
+     * Configures a boolean property for OptionsResolver.
      *
      * @param string          $property
      * @param OptionsResolver $resolver
@@ -170,7 +170,7 @@ abstract class Base implements Section
     }
 
     /**
-     * Configures an environment property for OptionsResolver
+     * Configures an environment property for OptionsResolver.
      *
      * @param OptionsResolver $resolver
      */
@@ -195,7 +195,7 @@ abstract class Base implements Section
     }
 
     /**
-     * Configures a byte property for OptionsResolver
+     * Configures a byte property for OptionsResolver.
      *
      * @param string          $property
      * @param OptionsResolver $resolver

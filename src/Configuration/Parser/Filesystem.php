@@ -16,7 +16,7 @@ use Supervisor\Exception\ParsingFailed;
 use League\Flysystem\Filesystem as Flysystem;
 
 /**
- * Read a file from any filesystem and parse it as string
+ * Read a file from any filesystem and parse it as string.
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */

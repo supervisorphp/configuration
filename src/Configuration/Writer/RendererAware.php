@@ -15,7 +15,7 @@ use Supervisor\Configuration\Writer;
 use Supervisor\Configuration\Renderer;
 
 /**
- * Accepts a Renderer instance to render a configuration into string
+ * Accepts a Renderer instance to render a configuration into string.
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
@@ -31,6 +31,6 @@ abstract class RendererAware implements Writer
      */
     public function __construct(Renderer $renderer = null)
     {
-        $this->renderer = $renderer ?: new Renderer;
+        $this->renderer = $renderer ?: new Renderer();
     }
 }

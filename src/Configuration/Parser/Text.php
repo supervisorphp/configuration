@@ -15,7 +15,7 @@ use Supervisor\Configuration;
 use Supervisor\Exception\ParsingFailed;
 
 /**
- * Parse configuration from string
+ * Parse configuration from string.
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
@@ -40,7 +40,7 @@ class Text extends Base
     public function parse(Configuration $configuration = null)
     {
         if (is_null($configuration)) {
-            $configuration = new Configuration;
+            $configuration = new Configuration();
         }
 
         // Suppress error to handle it

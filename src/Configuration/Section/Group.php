@@ -14,7 +14,7 @@ namespace Supervisor\Configuration\Section;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Group section
+ * Group section.
  *
  * @link http://supervisord.org/configuration.html#group-x-section-settings
  *

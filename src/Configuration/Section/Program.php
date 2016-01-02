@@ -15,7 +15,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\Options;
 
 /**
- * Program section
+ * Program section.
  *
  * @link http://supervisord.org/configuration.html#program-x-section-settings
  *
@@ -59,7 +59,7 @@ class Program extends Named
     }
 
     /**
-     * Configures process related properties
+     * Configures process related properties.
      *
      * @param OptionsResolver $resolver
      */
@@ -84,7 +84,7 @@ class Program extends Named
     }
 
     /**
-     * Configures start control related properties
+     * Configures start control related properties.
      *
      * @param OptionsResolver $resolver
      */
@@ -92,7 +92,6 @@ class Program extends Named
     {
         $resolver->setDefined('autostart');
         $this->configureBooleanProperty('autostart', $resolver);
-
 
         $resolver
             ->setDefined('autorestart')
@@ -110,7 +109,7 @@ class Program extends Named
     }
 
     /**
-     * Configures stop control related properties
+     * Configures stop control related properties.
      *
      * @param OptionsResolver $resolver
      */
@@ -135,7 +134,7 @@ class Program extends Named
     }
 
     /**
-     * Configures log related properties
+     * Configures log related properties.
      *
      * @param OptionsResolver $resolver
      */
@@ -149,7 +148,7 @@ class Program extends Named
     }
 
     /**
-     * Configures stdout log related properties
+     * Configures stdout log related properties.
      *
      * @param OptionsResolver $resolver
      */
@@ -176,7 +175,7 @@ class Program extends Named
     }
 
     /**
-     * Configures stderr log related properties
+     * Configures stderr log related properties.
      *
      * @param OptionsResolver $resolver
      */

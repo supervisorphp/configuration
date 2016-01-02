@@ -12,7 +12,7 @@
 namespace Supervisor\Exception;
 
 /**
- * Thrown when an invalid section is passed to the Configuration parser
+ * Thrown when an invalid section is passed to the Configuration parser.
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
