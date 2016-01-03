@@ -12,7 +12,7 @@ use Supervisor\Configuration\Loader;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class IniStringLoader implements Loader
+final class IniStringLoader implements Loader
 {
     use HasIniParser;
     use SectionParser;
@@ -20,7 +20,7 @@ class IniStringLoader implements Loader
     /**
      * @var string
      */
-    protected $string;
+    private $string;
 
     /**
      * @param string $string
