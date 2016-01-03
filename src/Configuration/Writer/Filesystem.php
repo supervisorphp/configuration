@@ -3,7 +3,7 @@
 namespace Supervisor\Configuration\Writer;
 
 use Supervisor\Configuration;
-use Supervisor\Configuration\Renderer;
+use Indigo\Ini\Renderer;
 use League\Flysystem\Filesystem as Flysystem;
 
 /**

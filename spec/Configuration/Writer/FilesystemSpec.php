@@ -3,7 +3,7 @@
 namespace spec\Supervisor\Configuration\Writer;
 
 use Supervisor\Configuration;
-use Supervisor\Configuration\Renderer;
+use Indigo\Ini\Renderer;
 use League\Flysystem\Filesystem as Flysystem;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -25,20 +25,22 @@ class FilesystemSpec extends ObjectBehavior
         $this->shouldImplement('Supervisor\Configuration\Writer');
     }
 
-    function it_writes_a_configuration_to_a_file(Flysystem $filesystem, Renderer $renderer, Configuration $configuration)
+    function it_writes_a_configuration_to_a_file(Flysystem $filesystem, Configuration $configuration)
     {
-        $renderer->render($configuration)->willReturn('contents');
-        $filesystem->put('file', 'contents')->willReturn(true);
-        $this->beConstructedWith($filesystem, 'file', $renderer);
+        $configuration->toArray()->willReturn([]);
+
+        $filesystem->put('file', '')->willReturn(true);
+        $this->beConstructedWith($filesystem, 'file');
 
         $this->write($configuration)->shouldReturn(true);
     }
 
-    function it_throws_an_exception_when_configuration_cannot_be_written(Flysystem $filesystem, Renderer $renderer, Configuration $configuration)
+    function it_throws_an_exception_when_configuration_cannot_be_written(Flysystem $filesystem, Configuration $configuration)
     {
-        $renderer->render($configuration)->willReturn('contents');
-        $filesystem->put('file', 'contents')->willReturn(false);
-        $this->beConstructedWith($filesystem, 'file', $renderer);
+        $configuration->toArray()->willReturn([]);
+
+        $filesystem->put('file', '')->willReturn(false);
+        $this->beConstructedWith($filesystem, 'file');
 
         $this->shouldThrow('Supervisor\Exception\WrittingFailed')->duringWrite($configuration);
     }

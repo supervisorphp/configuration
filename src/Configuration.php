@@ -99,4 +99,20 @@ class Configuration
     {
         $this->sections = [];
     }
+
+    /**
+     * Converts the configuration to array.
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        $ini = [];
+
+        foreach ($this->sections as $sectionName => $section) {
+            $ini[$sectionName] = $section->getProperties();
+        }
+
+        return $ini;
+    }
 }

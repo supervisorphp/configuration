@@ -2,8 +2,8 @@
 
 namespace spec\Supervisor\Configuration\Writer;
 
+use Prophecy\Argument;
 use Supervisor\Configuration;
-use Supervisor\Configuration\Renderer;
 use PhpSpec\ObjectBehavior;
 
 class FileSpec extends ObjectBehavior
@@ -23,18 +23,20 @@ class FileSpec extends ObjectBehavior
         $this->shouldImplement('Supervisor\Configuration\Writer');
     }
 
-    function it_writes_a_configuration_to_a_file(Renderer $renderer, Configuration $configuration)
+    function it_writes_a_configuration_to_a_file(Configuration $configuration)
     {
-        $renderer->render($configuration)->willReturn('contents');
-        $this->beConstructedWith(tempnam(sys_get_temp_dir(), 'supervisor'), $renderer);
+        $configuration->toArray()->willReturn([]);
 
-        $this->write($configuration)->shouldReturn(8);
+        $this->beConstructedWith(tempnam(sys_get_temp_dir(), 'supervisor'));
+
+        $this->write($configuration)->shouldReturn(0);
     }
 
-    function it_throws_an_exception_when_configuration_cannot_be_written(Renderer $renderer, Configuration $configuration)
+    function it_throws_an_exception_when_configuration_cannot_be_written(Configuration $configuration)
     {
-        $renderer->render($configuration)->willReturn('contents');
-        $this->beConstructedWith('', $renderer);
+        $configuration->toArray()->willReturn([]);
+
+        $this->beConstructedWith('');
 
         $this->shouldThrow('Supervisor\Exception\WrittingFailed')->duringWrite($configuration);
     }

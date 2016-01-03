@@ -12,6 +12,7 @@
     ],
     "require": {
         "php": ">=5.4",
+        "indigophp/ini": "dev-master",
         "symfony/options-resolver": "^2.6|^3.0"
     },
     "require-dev": {

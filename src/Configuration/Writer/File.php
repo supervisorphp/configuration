@@ -3,7 +3,8 @@
 namespace Supervisor\Configuration\Writer;
 
 use Supervisor\Configuration;
-use Supervisor\Configuration\Renderer;
+use Indigo\Ini\Renderer;
+use Supervisor\Configuration\Writer;
 use Supervisor\Exception\WrittingFailed;
 
 /**
@@ -11,22 +12,21 @@ use Supervisor\Exception\WrittingFailed;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class File extends RendererAware
+class File implements Writer
 {
+    use HasRenderer;
+
     /**
      * @var string
      */
     protected $file;
 
     /**
-     * @param string        $file
-     * @param Renderer|null $renderer
+     * @param string $file
      */
-    public function __construct($file, Renderer $renderer = null)
+    public function __construct($file)
     {
         $this->file = $file;
-
-        parent::__construct($renderer);
     }
 
     /**
@@ -34,7 +34,7 @@ class File extends RendererAware
      */
     public function write(Configuration $configuration)
     {
-        $fileContents = $this->renderer->render($configuration);
+        $fileContents = $this->getRenderer()->render($configuration->toArray());
 
         if (false === $result = $this->writeFile($fileContents)) {
             throw new WrittingFailed(sprintf('Cannot write configuration into file %s', $this->file));

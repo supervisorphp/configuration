@@ -34,10 +34,7 @@ class Text extends Base
             $configuration = new Configuration();
         }
 
-        // Suppress error to handle it
-        if (false === $ini = @parse_ini_string($this->text, true, INI_SCANNER_RAW)) {
-            throw new ParsingFailed('Given data cannot be parsed as INI string');
-        }
+        $ini = $this->getParser()->parse($this->text);
 
         $sections = $this->parseArray($ini);
         $configuration->addSections($sections);

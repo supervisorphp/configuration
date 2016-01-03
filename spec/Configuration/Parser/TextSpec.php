@@ -41,6 +41,6 @@ class TextSpec extends ObjectBehavior
     {
         $this->beConstructedWith('?{}|&~![()^"');
 
-        $this->shouldThrow('Supervisor\Exception\ParsingFailed')->duringParse();
+        $this->shouldThrow('Indigo\Ini\Exception\ParserException')->duringParse();
     }
 }

@@ -34,6 +34,10 @@ class Filesystem extends File
      */
     public function parse(Configuration $configuration = null)
     {
+        if (is_null($configuration)) {
+            $configuration = new Configuration();
+        }
+
         if (!$this->filesystem->has($this->file)) {
             throw new ParsingFailed(sprintf('File "%s" not found', $this->file));
         }
@@ -42,8 +46,11 @@ class Filesystem extends File
             throw new ParsingFailed(sprintf('Reading file "%s" failed', $this->file));
         }
 
-        $parser = new Text($fileContents);
+        $ini = $this->getParser()->parse($fileContents);
 
-        return $parser->parse($configuration);
+        $sections = $this->parseArray($ini);
+        $configuration->addSections($sections);
+
+        return $configuration;
     }
 }

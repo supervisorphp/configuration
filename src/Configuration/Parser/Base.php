@@ -2,6 +2,7 @@
 
 namespace Supervisor\Configuration\Parser;
 
+use Indigo\Ini\Parser as IniParser;
 use Supervisor\Configuration\Parser;
 use Supervisor\Exception\UnknownSection;
 
@@ -29,6 +30,11 @@ abstract class Base implements Parser
         'unix_http_server' => 'Supervisor\Configuration\Section\UnixHttpServer',
         'rpcinterface'     => 'Supervisor\Configuration\Section\RpcInterface',
     ];
+
+    /**
+     * @var IniParser
+     */
+    protected $parser;
 
     /**
      * Adds or overrides default section map.
@@ -99,5 +105,19 @@ abstract class Base implements Parser
         }
 
         return new $class($section);
+    }
+
+    /**
+     * Returns the INI parser.
+     *
+     * @return IniParser
+     */
+    protected function getParser()
+    {
+        if (!isset($this->parser)) {
+            $this->parser = new IniParser();
+        }
+
+        return $this->parser;
     }
 }
