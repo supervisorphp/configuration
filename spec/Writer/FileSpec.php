@@ -38,6 +38,6 @@ class FileSpec extends ObjectBehavior
 
         $this->beConstructedWith('');
 
-        $this->shouldThrow('Supervisor\Configuration\Exception\WrittingFailed')->duringWrite($configuration);
+        $this->shouldThrow('Supervisor\Configuration\Exception\WriterException')->duringWrite($configuration);
     }
 }

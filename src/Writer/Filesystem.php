@@ -19,15 +19,14 @@ class Filesystem extends File
     protected $filesystem;
 
     /**
-     * @param Flysystem     $filesystem
-     * @param string        $file
-     * @param Renderer|null $renderer
+     * @param Flysystem $filesystem
+     * @param string    $file
      */
-    public function __construct(Flysystem $filesystem, $file, Renderer $renderer = null)
+    public function __construct(Flysystem $filesystem, $file)
     {
         $this->filesystem = $filesystem;
 
-        parent::__construct($file, $renderer);
+        parent::__construct($file);
     }
 
     /**

@@ -7,6 +7,6 @@ namespace Supervisor\Configuration\Exception;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class WrittingFailed extends \Exception
+class WriterException extends \Exception
 {
 }

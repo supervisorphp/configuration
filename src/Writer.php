@@ -2,7 +2,7 @@
 
 namespace Supervisor\Configuration;
 
-use Supervisor\Configuration\Exception\WrittingFailed;
+use Supervisor\Configuration\Exception\WriterException;
 
 /**
  * Writes configuration to various destinations.
@@ -16,7 +16,7 @@ interface Writer
      *
      * @param Configuration $configuration
      *
-     * @throws WrittingFailed If the configuration cannot be written
+     * @throws WriterException
      */
     public function write(Configuration $configuration);
 }

@@ -4,7 +4,7 @@ namespace Supervisor\Configuration\Writer;
 
 use Supervisor\Configuration\Configuration;
 use Supervisor\Configuration\Writer;
-use Supervisor\Configuration\Exception\WrittingFailed;
+use Supervisor\Configuration\Exception\WriterException;
 
 /**
  * Writes a Configuration into a file.
@@ -36,7 +36,7 @@ class File implements Writer
         $fileContents = $this->getRenderer()->render($configuration->toArray());
 
         if (false === $result = $this->writeFile($fileContents)) {
-            throw new WrittingFailed(sprintf('Cannot write configuration into file %s', $this->file));
+            throw new WriterException(sprintf('Cannot write configuration into file %s', $this->file));
         }
 
         return $result;

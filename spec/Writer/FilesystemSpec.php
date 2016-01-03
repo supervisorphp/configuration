@@ -42,6 +42,6 @@ class FilesystemSpec extends ObjectBehavior
         $filesystem->put('file', '')->willReturn(false);
         $this->beConstructedWith($filesystem, 'file');
 
-        $this->shouldThrow('Supervisor\Configuration\Exception\WrittingFailed')->duringWrite($configuration);
+        $this->shouldThrow('Supervisor\Configuration\Exception\WriterException')->duringWrite($configuration);
     }
 }
