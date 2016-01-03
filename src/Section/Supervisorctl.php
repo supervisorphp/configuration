@@ -33,7 +33,7 @@ class Supervisorctl extends Base
 
         $resolver
             ->setDefined('password')
-            ->setAllowedTypes('password', 'string');
+            ->setAllowedTypes('password', ['string', 'numeric']);
 
         $resolver
             ->setDefined('prompt')

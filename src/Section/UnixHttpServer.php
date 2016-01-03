@@ -41,6 +41,6 @@ class UnixHttpServer extends Base
 
         $resolver
             ->setDefined('password')
-            ->setAllowedTypes('password', 'string');
+            ->setAllowedTypes('password', ['string', 'numeric']);
     }
 }
