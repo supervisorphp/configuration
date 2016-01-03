@@ -32,27 +32,32 @@ class SectionDataSpec extends ObjectBehavior
         $this->getName()->shouldReturn('section');
     }
 
-    function it_has_a_property()
+    function it_returns_a_property()
     {
-        $this->hasProperty('key')->shouldReturn(true);
         $this->getProperty('key')->shouldReturn('value');
-
-        $this->hasProperty('key2')->shouldReturn(false);
-
-        $this->setProperty('key2', 'value2');
-
-        $this->hasProperty('key2')->shouldReturn(true);
-        $this->getProperty('key2')->shouldReturn('value2');
     }
 
-    function it_has_properties()
+    function it_returns_a_non_existent_property()
     {
-        $this->setProperties([
-            'key2' => 'value2',
-        ]);
+        $this->getProperty('non_existent_key')->shouldReturn(null);
+    }
 
-        $this->getProperties()->shouldReturn([
-            'key2' => 'value2',
-        ]);
+    function it_accepts_a_property()
+    {
+        $this->setProperty('key', 'value2');
+
+        $this->getProperty('key')->shouldReturn('value2');
+    }
+
+    function it_returns_properties()
+    {
+        $this->getProperties()->shouldReturn(['key' => 'value']);
+    }
+
+    function it_accepts_properties()
+    {
+        $this->setProperties(['key' => 'value2']);
+
+        $this->getProperty('key')->shouldReturn('value2');
     }
 }

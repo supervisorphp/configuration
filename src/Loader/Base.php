@@ -52,17 +52,15 @@ abstract class Base implements Loader
      *
      * @param string $section
      *
-     * @return string
-     *
-     * @throws UnknownException If section is not found in the section map
+     * @return string|bool
      */
     public function findSection($section)
     {
-        if (!isset($this->sectionMap[$section])) {
-            throw new UnknownSection($section);
+        if (isset($this->sectionMap[$section])) {
+            return $this->sectionMap[$section];
         }
 
-        return $this->sectionMap[$section];
+        return false;
     }
 
     /**
@@ -89,16 +87,21 @@ abstract class Base implements Loader
     /**
      * Parses an individual section.
      *
-     * @param string $name
-     * @param array  $section Array representation of section
+     * @param string $sectionName
+     * @param array  $section
      *
      * @return Section
      */
-    public function parseSection($name, array $section)
+    public function parseSection($sectionName, array $section)
     {
-        $name = explode(':', $name, 2);
+        $name = explode(':', $sectionName, 2);
 
         $class = $this->findSection($name[0]);
+
+        if (false === $class) {
+            $class = 'Supervisor\Configuration\Section\GenericSection';
+            $name[1] = $sectionName;
+        }
 
         if (isset($name[1])) {
             return new $class($name[1], $section);

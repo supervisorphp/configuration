@@ -26,25 +26,23 @@ class LoaderSpec extends ObjectBehavior
 
     function it_throws_an_exception_when_section_not_found()
     {
-        $this->shouldThrow('Supervisor\Configuration\Exception\UnknownSection')->duringFindSection('invalid');
+        $this->findSection('invalid')->shouldReturn(false);
     }
 
     function it_parses_an_array()
     {
-        $this->addSectionMap('test', 'Supervisor\Configuration\Stub\Section');
         $sections = $this->parseArray(['test' => ['key' => 'value']]);
 
         $sections->shouldBeArray();
-        $sections[0]->shouldHaveType('Supervisor\Configuration\Stub\Section');
+        $sections[0]->shouldHaveType('Supervisor\Configuration\Section\GenericSection');
         $sections[0]->getProperty('key')->shouldReturn('value');
     }
 
     function it_parses_a_section()
     {
-        $this->addSectionMap('test', 'Supervisor\Configuration\Stub\Section');
         $section = $this->parseSection('test', ['key' => 'value']);
 
-        $section->shouldHaveType('Supervisor\Configuration\Stub\Section');
+        $section->shouldHaveType('Supervisor\Configuration\Section\GenericSection');
         $section->getProperty('key')->shouldReturn('value');
     }
 }
