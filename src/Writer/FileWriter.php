@@ -2,29 +2,37 @@
 
 namespace Supervisor\Configuration\Writer;
 
+use League\Flysystem\Filesystem;
 use Supervisor\Configuration\Configuration;
-use Supervisor\Configuration\Writer;
 use Supervisor\Configuration\Exception\WriterException;
+use Supervisor\Configuration\Writer;
 
 /**
- * Writes a Configuration into a file.
+ * Write a configuration into any filesystem.
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class File implements Writer
+final class FileWriter implements Writer
 {
     use HasRenderer;
 
     /**
-     * @var string
+     * @var Filesystem
      */
-    protected $file;
+    private $filesystem;
 
     /**
-     * @param string $file
+     * @var string
      */
-    public function __construct($file)
+    private $file;
+
+    /**
+     * @param Filesystem $filesystem
+     * @param string     $file
+     */
+    public function __construct(Filesystem $filesystem, $file)
     {
+        $this->filesystem = $filesystem;
         $this->file = $file;
     }
 
@@ -33,24 +41,12 @@ class File implements Writer
      */
     public function write(Configuration $configuration)
     {
-        $fileContents = $this->getRenderer()->render($configuration->toArray());
+        $ini = $this->getRenderer()->render($configuration->toArray());
 
-        if (false === $result = $this->writeFile($fileContents)) {
+        if (false === $result = $this->filesystem->put($this->file, $ini)) {
             throw new WriterException(sprintf('Cannot write configuration into file %s', $this->file));
         }
 
         return $result;
-    }
-
-    /**
-     * Write contents into file.
-     *
-     * @param string $contents
-     *
-     * @return int|bool
-     */
-    protected function writeFile($contents)
-    {
-        return @file_put_contents($this->file, $contents);
     }
 }

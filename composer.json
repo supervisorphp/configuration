@@ -13,15 +13,12 @@
     "require": {
         "php": ">=5.4",
         "indigophp/ini": "dev-master",
+        "league/flysystem": "^1.0",
         "symfony/options-resolver": "^2.6|^3.0"
     },
     "require-dev": {
-        "league/flysystem": "^1.0",
         "phpspec/phpspec": "^2.4",
         "henrikbjorn/phpspec-code-coverage" : "^1.0"
-    },
-    "suggest": {
-        "league/flysystem": "Used by Filesystem Parsers/Writers"
     },
     "autoload": {
         "psr-4": {
@@ -42,7 +39,5 @@
         "branch-alias": {
             "dev-master": "0.2-dev"
         }
-    },
-    "prefer-stable": true,
-    "minimum-stability": "dev"
+    }
 }
