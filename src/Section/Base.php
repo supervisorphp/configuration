@@ -13,17 +13,7 @@ use Symfony\Component\OptionsResolver\Options;
  */
 abstract class Base implements Section
 {
-    /**
-     * Name of section (eg. supervisord or program:test).
-     *
-     * @var string
-     */
-    protected $name;
-
-    /**
-     * @var array
-     */
-    protected $properties;
+    use SectionData;
 
     /**
      * @var OptionsResolver[]
@@ -41,38 +31,12 @@ abstract class Base implements Section
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getProperty($key)
-    {
-        if (isset($this->properties[$key])) {
-            return $this->properties[$key];
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function setProperty($key, $value)
     {
         $properties = $this->properties;
         $properties[$key] = $value;
 
         $this->setProperties($properties);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getProperties()
-    {
-        return $this->properties;
     }
 
     /**

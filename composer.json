@@ -28,6 +28,7 @@
     },
     "autoload-dev": {
         "psr-4": {
+            "spec\\Supervisor\\Configuration\\": "spec/",
             "Supervisor\\Configuration\\Stub\\": "stub/"
         }
     },

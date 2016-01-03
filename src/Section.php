@@ -28,6 +28,15 @@ interface Section
     public function getProperty($key);
 
     /**
+     * Checks if a property exists.
+     *
+     * @param string $key
+     *
+     * @return bool
+     */
+    public function hasProperty($key);
+
+    /**
      * Sets a specific property.
      *
      * @param string $key
