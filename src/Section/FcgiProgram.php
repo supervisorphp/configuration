@@ -34,7 +34,7 @@ class FcgiProgram extends Program
             ->setAllowedTypes('socket_owner', 'string');
 
         // TODO: octal vs. decimal value
-        $resolver->setDefined('socket_mode');
-        $this->configureIntegerProperty('socket_mode', $resolver);
+        $resolver->setDefined('socket_mode')
+            ->setAllowedTypes('socket_mode', 'integer');
     }
 }

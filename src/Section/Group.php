@@ -26,7 +26,7 @@ class Group extends Named
         $resolver->setRequired('programs');
         $this->configureArrayProperty('programs', $resolver);
 
-        $resolver->setDefined('priority');
-        $this->configureIntegerProperty('priority', $resolver);
+        $resolver->setDefined('priority')
+            ->setAllowedTypes('priority', 'integer');
     }
 }

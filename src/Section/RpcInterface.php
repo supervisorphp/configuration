@@ -28,7 +28,7 @@ class RpcInterface extends Named
             ->setAllowedTypes('supervisor.rpcinterface_factory', 'string');
 
         // Note: undocumented, based on examples
-        $resolver->setDefined('retries');
-        $this->configureIntegerProperty('retries', $resolver);
+        $resolver->setDefined('retries')
+            ->setAllowedTypes('retries', 'integer');
     }
 }

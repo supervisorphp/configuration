@@ -41,8 +41,8 @@ class Program extends Named
             ->setAllowedTypes('directory', 'string');
 
         // TODO: octal vs. decimal value
-        $resolver->setDefined('umask');
-        $this->configureIntegerProperty('umask', $resolver);
+        $resolver->setDefined('umask')
+            ->setAllowedTypes('umask', 'integer');
 
         $resolver
             ->setDefined('serverurl')
@@ -64,14 +64,14 @@ class Program extends Named
             ->setDefined('process_name')
             ->setAllowedTypes('process_name', 'string');
 
-        $resolver->setDefined('numprocs');
-        $this->configureIntegerProperty('numprocs', $resolver);
+        $resolver->setDefined('numprocs')
+            ->setAllowedTypes('numprocs', 'integer');
 
-        $resolver->setDefined('numprocs_start');
-        $this->configureIntegerProperty('numprocs_start', $resolver);
+        $resolver->setDefined('numprocs_start')
+            ->setAllowedTypes('numprocs_start', 'integer');
 
-        $resolver->setDefined('priority');
-        $this->configureIntegerProperty('priority', $resolver);
+        $resolver->setDefined('priority')
+            ->setAllowedTypes('priority', 'integer');
     }
 
     /**
@@ -81,8 +81,8 @@ class Program extends Named
      */
     private function configureStartControlProperties(OptionsResolver $resolver)
     {
-        $resolver->setDefined('autostart');
-        $this->configureBooleanProperty('autostart', $resolver);
+        $resolver->setDefined('autostart')
+            ->setAllowedTypes('autostart', 'bool');
 
         $resolver
             ->setDefined('autorestart')
@@ -92,11 +92,11 @@ class Program extends Named
                 return (is_bool($value) or $value === 'unexpected') ? $value : ($value === 'true' ? true : false);
             });
 
-        $resolver->setDefined('startsecs');
-        $this->configureIntegerProperty('startsecs', $resolver);
+        $resolver->setDefined('startsecs')
+            ->setAllowedTypes('startsecs', 'integer');
 
-        $resolver->setDefined('startretries');
-        $this->configureIntegerProperty('startretries', $resolver);
+        $resolver->setDefined('startretries')
+            ->setAllowedTypes('startretries', 'integer');
     }
 
     /**
@@ -114,14 +114,14 @@ class Program extends Named
             ->setAllowedTypes('stopsignal', 'string')
             ->setAllowedValues('stopsignal', ['TERM', 'HUP', 'INT', 'QUIT', 'KILL', 'USR1', 'USR2']);
 
-        $resolver->setDefined('stopwaitsecs');
-        $this->configureIntegerProperty('stopwaitsecs', $resolver);
+        $resolver->setDefined('stopwaitsecs')
+            ->setAllowedTypes('stopwaitsecs', 'integer');
 
-        $resolver->setDefined('stopasgroup');
-        $this->configureBooleanProperty('stopasgroup', $resolver);
+        $resolver->setDefined('stopasgroup')
+            ->setAllowedTypes('stopasgroup', 'bool');
 
-        $resolver->setDefined('killasgroup');
-        $this->configureBooleanProperty('killasgroup', $resolver);
+        $resolver->setDefined('killasgroup')
+            ->setAllowedTypes('killasgroup', 'bool');
     }
 
     /**
@@ -131,8 +131,8 @@ class Program extends Named
      */
     private function configureLogProperties(OptionsResolver $resolver)
     {
-        $resolver->setDefined('redirect_stderr');
-        $this->configureBooleanProperty('redirect_stderr', $resolver);
+        $resolver->setDefined('redirect_stderr')
+            ->setAllowedTypes('redirect_stderr', 'bool');
 
         $this->configureStdoutLogProperties($resolver);
         $this->configureStderrLogProperties($resolver);
@@ -152,17 +152,17 @@ class Program extends Named
         $resolver->setDefined('stdout_logfile_maxbytes');
         $this->configureByteProperty('stdout_logfile_maxbytes', $resolver);
 
-        $resolver->setDefined('stdout_logfile_backups');
-        $this->configureIntegerProperty('stdout_logfile_backups', $resolver);
+        $resolver->setDefined('stdout_logfile_backups')
+            ->setAllowedTypes('stdout_logfile_backups', 'integer');
 
         $resolver->setDefined('stdout_capture_maxbytes');
         $this->configureByteProperty('stdout_capture_maxbytes', $resolver);
 
-        $resolver->setDefined('stdout_events_enabled');
-        $this->configureBooleanProperty('stdout_events_enabled', $resolver);
+        $resolver->setDefined('stdout_events_enabled')
+            ->setAllowedTypes('stdout_events_enabled', 'bool');
 
-        $resolver->setDefined('stdout_syslog');
-        $this->configureBooleanProperty('stdout_syslog', $resolver);
+        $resolver->setDefined('stdout_syslog')
+            ->setAllowedTypes('stdout_syslog', 'bool');
     }
 
     /**
@@ -179,16 +179,16 @@ class Program extends Named
         $resolver->setDefined('stderr_logfile_maxbytes');
         $this->configureByteProperty('stderr_logfile_maxbytes', $resolver);
 
-        $resolver->setDefined('stderr_logfile_backups');
-        $this->configureIntegerProperty('stderr_logfile_backups', $resolver);
+        $resolver->setDefined('stderr_logfile_backups')
+            ->setAllowedTypes('stderr_logfile_backups', 'integer');
 
         $resolver->setDefined('stderr_capture_maxbytes');
         $this->configureByteProperty('stderr_capture_maxbytes', $resolver);
 
-        $resolver->setDefined('stderr_events_enabled');
-        $this->configureBooleanProperty('stderr_events_enabled', $resolver);
+        $resolver->setDefined('stderr_events_enabled')
+            ->setAllowedTypes('stderr_events_enabled', 'bool');
 
-        $resolver->setDefined('stderr_syslog');
-        $this->configureBooleanProperty('stderr_syslog', $resolver);
+        $resolver->setDefined('stderr_syslog')
+            ->setAllowedTypes('stderr_syslog', 'bool');
     }
 }

@@ -79,21 +79,6 @@ abstract class Base implements Section
      */
 
     /**
-     * Configures an integer property for OptionsResolver.
-     *
-     * @param string          $property
-     * @param OptionsResolver $resolver
-     */
-    protected function configureIntegerProperty($property, OptionsResolver $resolver)
-    {
-        $resolver
-            ->setAllowedTypes($property, ['integer', 'numeric'])
-            ->setNormalizer($property, function (Options $options, $value) {
-                return is_int($value) ? $value : intval($value);
-            });
-    }
-
-    /**
      * Configures an array property for OptionsResolver.
      *
      * @param string          $property
@@ -105,22 +90,6 @@ abstract class Base implements Section
             ->setAllowedTypes($property, ['array', 'string'])
             ->setNormalizer($property, function (Options $options, $value) {
                 return is_array($value) ? $value : explode(',', str_replace(' ', '', $value));
-            });
-    }
-
-    /**
-     * Configures a boolean property for OptionsResolver.
-     *
-     * @param string          $property
-     * @param OptionsResolver $resolver
-     */
-    protected function configureBooleanProperty($property, OptionsResolver $resolver)
-    {
-        $resolver
-            ->setAllowedTypes($property, ['bool', 'string'])
-            ->setAllowedValues($property, [true, false, 'true', 'false'])
-            ->setNormalizer($property, function (Options $options, $value) {
-                return is_bool($value) ? $value : ($value === 'true' ? true : false);
             });
     }
 

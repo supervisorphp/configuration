@@ -25,8 +25,8 @@ class EventListener extends Program
     {
         parent::configureProperties($resolver);
 
-        $resolver->setDefined('buffer_size');
-        $this->configureIntegerProperty('buffer_size', $resolver);
+        $resolver->setDefined('buffer_size')
+            ->setAllowedTypes('buffer_size', 'integer');
 
         $resolver->setDefined('events');
         $this->configureArrayProperty('events', $resolver);

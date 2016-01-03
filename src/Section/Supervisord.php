@@ -27,8 +27,8 @@ class Supervisord extends Base
         $resolver->setDefined('logfile_maxbytes');
         $this->configureByteProperty('logfile_maxbytes', $resolver);
 
-        $resolver->setDefined('logfile_backups');
-        $this->configureIntegerProperty('logfile_backups', $resolver);
+        $resolver->setDefined('logfile_backups')
+            ->setAllowedTypes('logfile_backups', 'integer');
 
         $resolver
             ->setDefined('loglevel')
@@ -40,20 +40,20 @@ class Supervisord extends Base
             ->setAllowedTypes('pidfile', 'string');
 
         // TODO: octal vs. decimal value
-        $resolver->setDefined('umask');
-        $this->configureIntegerProperty('umask', $resolver);
+        $resolver->setDefined('umask')
+            ->setAllowedTypes('umask', 'integer');
 
-        $resolver->setDefined('nodaemon');
-        $this->configureBooleanProperty('nodaemon', $resolver);
+        $resolver->setDefined('nodaemon')
+            ->setAllowedTypes('nodaemon', 'bool');
 
-        $resolver->setDefined('minfds');
-        $this->configureIntegerProperty('minfds', $resolver);
+        $resolver->setDefined('minfds')
+            ->setAllowedTypes('minfds', 'integer');
 
-        $resolver->setDefined('minprocs');
-        $this->configureIntegerProperty('minprocs', $resolver);
+        $resolver->setDefined('minprocs')
+            ->setAllowedTypes('minprocs', 'integer');
 
-        $resolver->setDefined('nocleanup');
-        $this->configureBooleanProperty('nocleanup', $resolver);
+        $resolver->setDefined('nocleanup')
+            ->setAllowedTypes('nocleanup', 'bool');
 
         $resolver
             ->setDefined('childlogdir')
@@ -67,8 +67,8 @@ class Supervisord extends Base
             ->setDefined('directory')
             ->setAllowedTypes('directory', 'string');
 
-        $resolver->setDefined('strip_ansi');
-        $this->configureBooleanProperty('strip_ansi', $resolver);
+        $resolver->setDefined('strip_ansi')
+            ->setAllowedTypes('strip_ansi', 'bool');
 
         $this->configureEnvironmentProperty($resolver);
 
