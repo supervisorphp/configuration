@@ -9,7 +9,7 @@ use Indigo\Ini\Renderer;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-trait HasRenderer
+trait HasIniRenderer
 {
     /**
      * @var Renderer

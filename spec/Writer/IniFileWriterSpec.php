@@ -8,7 +8,7 @@ use Supervisor\Configuration\Configuration;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
-class FileWriterSpec extends ObjectBehavior
+class IniFileWriterSpec extends ObjectBehavior
 {
     function let(Filesystem $filesystem)
     {
@@ -17,7 +17,7 @@ class FileWriterSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Supervisor\Configuration\Writer\FileWriter');
+        $this->shouldHaveType('Supervisor\Configuration\Writer\IniFileWriter');
     }
 
     function it_is_a_writer()

@@ -12,9 +12,9 @@ use Supervisor\Configuration\Writer;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-final class FileWriter implements Writer
+final class IniFileWriter implements Writer
 {
-    use HasRenderer;
+    use HasIniRenderer;
 
     /**
      * @var Filesystem
