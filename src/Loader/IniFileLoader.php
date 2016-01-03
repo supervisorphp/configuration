@@ -2,31 +2,40 @@
 
 namespace Supervisor\Configuration\Loader;
 
+use Indigo\Ini\Exception\ParserException;
+use League\Flysystem\Filesystem;
 use Supervisor\Configuration\Configuration;
 use Supervisor\Configuration\Exception\LoaderException;
-use League\Flysystem\Filesystem as Flysystem;
+use Supervisor\Configuration\Loader;
 
 /**
- * Read a file from any filesystem and parse it as string.
+ * Read a file from any filesystem and parse it as INI string.
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class Filesystem extends File
+final class IniFileLoader implements Loader
 {
+    use HasIniParser;
+    use SectionParser;
+
     /**
-     * @var Flysystem
+     * @var Filesystem
      */
     protected $filesystem;
 
     /**
-     * @param Flysystem $filesystem
-     * @param string    $file
+     * @var string
      */
-    public function __construct(Flysystem $filesystem, $file)
+    protected $file;
+
+    /**
+     * @param Filesystem $filesystem
+     * @param string     $file
+     */
+    public function __construct(Filesystem $filesystem, $file)
     {
         $this->filesystem = $filesystem;
-
-        parent::__construct($file);
+        $this->file = $file;
     }
 
     /**
@@ -34,10 +43,6 @@ class Filesystem extends File
      */
     public function load(Configuration $configuration = null)
     {
-        if (is_null($configuration)) {
-            $configuration = new Configuration();
-        }
-
         if (!$this->filesystem->has($this->file)) {
             throw new LoaderException(sprintf('File "%s" not found', $this->file));
         }
@@ -46,11 +51,12 @@ class Filesystem extends File
             throw new LoaderException(sprintf('Reading file "%s" failed', $this->file));
         }
 
-        $ini = $this->getParser()->parse($fileContents);
+        try {
+            $ini = $this->getParser()->parse($fileContents);
+        } catch (ParserException $e) {
+            throw new LoaderException('Cannot parse INI', 0, $e);
+        }
 
-        $sections = $this->parseArray($ini);
-        $configuration->addSections($sections);
-
-        return $configuration;
+        return $this->parseSections($ini, $configuration);
     }
 }
