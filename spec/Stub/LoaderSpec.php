@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\Supervisor\Stub;
+namespace spec\Supervisor\Configuration\Stub;
 
 use PhpSpec\ObjectBehavior;
 
@@ -8,7 +8,7 @@ class LoaderSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('Supervisor\Stub\Loader');
+        $this->shouldHaveType('Supervisor\Configuration\Stub\Loader');
         $this->shouldHaveType('Supervisor\Configuration\Loader\Base');
     }
 
@@ -26,25 +26,25 @@ class LoaderSpec extends ObjectBehavior
 
     function it_throws_an_exception_when_section_not_found()
     {
-        $this->shouldThrow('Supervisor\Exception\UnknownSection')->duringFindSection('invalid');
+        $this->shouldThrow('Supervisor\Configuration\Exception\UnknownSection')->duringFindSection('invalid');
     }
 
     function it_parses_an_array()
     {
-        $this->addSectionMap('test', 'Supervisor\Stub\Section');
+        $this->addSectionMap('test', 'Supervisor\Configuration\Stub\Section');
         $sections = $this->parseArray(['test' => ['key' => 'value']]);
 
         $sections->shouldBeArray();
-        $sections[0]->shouldHaveType('Supervisor\Stub\Section');
+        $sections[0]->shouldHaveType('Supervisor\Configuration\Stub\Section');
         $sections[0]->getProperty('key')->shouldReturn('value');
     }
 
     function it_parses_a_section()
     {
-        $this->addSectionMap('test', 'Supervisor\Stub\Section');
+        $this->addSectionMap('test', 'Supervisor\Configuration\Stub\Section');
         $section = $this->parseSection('test', ['key' => 'value']);
 
-        $section->shouldHaveType('Supervisor\Stub\Section');
+        $section->shouldHaveType('Supervisor\Configuration\Stub\Section');
         $section->getProperty('key')->shouldReturn('value');
     }
 }

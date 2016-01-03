@@ -2,7 +2,7 @@
 
 namespace spec\Supervisor\Configuration\Loader;
 
-use Supervisor\Configuration;
+use Supervisor\Configuration\Configuration;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -34,13 +34,13 @@ class TextSpec extends ObjectBehavior
     {
         $configuration = $this->load();
 
-        $configuration->shouldHaveType('Supervisor\Configuration');
+        $configuration->shouldHaveType('Supervisor\Configuration\Configuration');
     }
 
     function it_throws_an_exception_when_parsing_failed()
     {
         $this->beConstructedWith('?{}|&~![()^"');
 
-        $this->shouldThrow('Supervisor\Exception\LoaderException')->duringLoad();
+        $this->shouldThrow('Supervisor\Configuration\Exception\LoaderException')->duringLoad();
     }
 }

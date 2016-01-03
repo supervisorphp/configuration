@@ -2,8 +2,8 @@
 
 namespace Supervisor\Configuration;
 
-use Supervisor\Configuration;
-use Supervisor\Exception\LoaderException;
+use Supervisor\Configuration\Configuration;
+use Supervisor\Configuration\Exception\LoaderException;
 
 /**
  * Load configuration from various sources.

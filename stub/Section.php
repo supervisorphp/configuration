@@ -1,6 +1,6 @@
 <?php
 
-namespace Supervisor\Stub;
+namespace Supervisor\Configuration\Stub;
 
 use Supervisor\Configuration\Section\Base;
 use Symfony\Component\OptionsResolver\OptionsResolver;

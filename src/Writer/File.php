@@ -2,10 +2,9 @@
 
 namespace Supervisor\Configuration\Writer;
 
-use Supervisor\Configuration;
-use Indigo\Ini\Renderer;
+use Supervisor\Configuration\Configuration;
 use Supervisor\Configuration\Writer;
-use Supervisor\Exception\WrittingFailed;
+use Supervisor\Configuration\Exception\WrittingFailed;
 
 /**
  * Writes a Configuration into a file.

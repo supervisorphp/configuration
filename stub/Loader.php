@@ -1,9 +1,9 @@
 <?php
 
-namespace Supervisor\Stub;
+namespace Supervisor\Configuration\Stub;
 
 use Supervisor\Configuration\Loader\Base;
-use Supervisor\Configuration;
+use Supervisor\Configuration\Configuration;
 
 /**
  * Loader Stub

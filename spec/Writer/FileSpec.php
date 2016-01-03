@@ -2,9 +2,9 @@
 
 namespace spec\Supervisor\Configuration\Writer;
 
-use Prophecy\Argument;
-use Supervisor\Configuration;
+use Supervisor\Configuration\Configuration;
 use PhpSpec\ObjectBehavior;
+use Prophecy\Argument;
 
 class FileSpec extends ObjectBehavior
 {
@@ -38,6 +38,6 @@ class FileSpec extends ObjectBehavior
 
         $this->beConstructedWith('');
 
-        $this->shouldThrow('Supervisor\Exception\WrittingFailed')->duringWrite($configuration);
+        $this->shouldThrow('Supervisor\Configuration\Exception\WrittingFailed')->duringWrite($configuration);
     }
 }

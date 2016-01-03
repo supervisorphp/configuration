@@ -1,6 +1,6 @@
 <?php
 
-namespace Supervisor\Exception;
+namespace Supervisor\Configuration\Exception;
 
 /**
  * Thrown when an invalid section is passed to the Configuration parser.

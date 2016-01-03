@@ -2,7 +2,7 @@
 
 namespace spec\Supervisor\Configuration\Loader;
 
-use Supervisor\Configuration;
+use Supervisor\Configuration\Configuration;
 use League\Flysystem\Filesystem as Flysystem;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -39,13 +39,13 @@ class FilesystemSpec extends ObjectBehavior
         $filesystem->has(null)->willReturn(false);
         $this->beConstructedWith($filesystem, null);
 
-        $this->shouldThrow('Supervisor\Exception\LoaderException')->duringLoad();
+        $this->shouldThrow('Supervisor\Configuration\Exception\LoaderException')->duringLoad();
     }
 
     function it_throws_an_exception_when_cannot_read_file_given(Flysystem $filesystem)
     {
         $filesystem->read('supervisord.conf')->willReturn(false);
 
-        $this->shouldThrow('Supervisor\Exception\LoaderException')->duringLoad();
+        $this->shouldThrow('Supervisor\Configuration\Exception\LoaderException')->duringLoad();
     }
 }

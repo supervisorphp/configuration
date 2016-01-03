@@ -2,8 +2,8 @@
 
 namespace Supervisor\Configuration;
 
-use Supervisor\Configuration;
-use Supervisor\Exception\WrittingFailed;
+use Supervisor\Configuration\Configuration;
+use Supervisor\Configuration\Exception\WrittingFailed;
 
 /**
  * Writes configuration to various destinations.

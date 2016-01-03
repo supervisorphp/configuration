@@ -3,8 +3,8 @@
 namespace Supervisor\Configuration\Loader;
 
 use Indigo\Ini\Exception\ParserException;
-use Supervisor\Configuration;
-use Supervisor\Exception\LoaderException;
+use Supervisor\Configuration\Configuration;
+use Supervisor\Configuration\Exception\LoaderException;
 
 /**
  * Parse configuration from string.

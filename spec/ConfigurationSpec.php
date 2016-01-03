@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\Supervisor;
+namespace spec\Supervisor\Configuration;
 
 use Supervisor\Configuration\Section;
 use PhpSpec\ObjectBehavior;
@@ -9,7 +9,7 @@ class ConfigurationSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('Supervisor\Configuration');
+        $this->shouldHaveType('Supervisor\Configuration\Configuration');
     }
 
     function it_returns_a_section(Section $supervisord)

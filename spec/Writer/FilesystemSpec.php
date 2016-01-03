@@ -2,8 +2,8 @@
 
 namespace spec\Supervisor\Configuration\Writer;
 
-use Supervisor\Configuration;
 use Indigo\Ini\Renderer;
+use Supervisor\Configuration\Configuration;
 use League\Flysystem\Filesystem as Flysystem;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -42,6 +42,6 @@ class FilesystemSpec extends ObjectBehavior
         $filesystem->put('file', '')->willReturn(false);
         $this->beConstructedWith($filesystem, 'file');
 
-        $this->shouldThrow('Supervisor\Exception\WrittingFailed')->duringWrite($configuration);
+        $this->shouldThrow('Supervisor\Configuration\Exception\WrittingFailed')->duringWrite($configuration);
     }
 }

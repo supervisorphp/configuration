@@ -2,8 +2,8 @@
 
 namespace Supervisor\Configuration\Loader;
 
-use Supervisor\Configuration;
-use Supervisor\Exception\LoaderException;
+use Supervisor\Configuration\Configuration;
+use Supervisor\Configuration\Exception\LoaderException;
 
 /**
  * Parses a file.

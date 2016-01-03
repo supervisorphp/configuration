@@ -1,8 +1,6 @@
 <?php
 
-namespace Supervisor;
-
-use Supervisor\Configuration\Section;
+namespace Supervisor\Configuration;
 
 /**
  * Supervisor configuration parser and generator.

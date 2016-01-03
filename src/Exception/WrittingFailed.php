@@ -1,6 +1,6 @@
 <?php
 
-namespace Supervisor\Exception;
+namespace Supervisor\Configuration\Exception;
 
 /**
  * Thrown when a writer cannot write a configuration.

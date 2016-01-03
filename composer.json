@@ -25,13 +25,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Supervisor\\": "src/"
+            "Supervisor\\Configuration\\": "src/"
         },
         "files": ["src/functions.php"]
     },
     "autoload-dev": {
         "psr-4": {
-            "Supervisor\\Stub\\": "stub/"
+            "Supervisor\\Configuration\\Stub\\": "stub/"
         }
     },
     "scripts": {

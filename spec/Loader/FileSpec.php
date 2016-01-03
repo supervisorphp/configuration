@@ -2,7 +2,7 @@
 
 namespace spec\Supervisor\Configuration\Loader;
 
-use Supervisor\Configuration;
+use Supervisor\Configuration\Configuration;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -10,7 +10,7 @@ class FileSpec extends ObjectBehavior
 {
     function let()
     {
-        $this->beConstructedWith(__DIR__.'/../../../resources/example.conf');
+        $this->beConstructedWith(__DIR__.'/../../resources/example.conf');
     }
 
     function it_is_initializable()
@@ -34,20 +34,20 @@ class FileSpec extends ObjectBehavior
     {
         $configuration = $this->load();
 
-        $configuration->shouldHaveType('Supervisor\Configuration');
+        $configuration->shouldHaveType('Supervisor\Configuration\Configuration');
     }
 
     function it_throws_an_exception_when_invalid_file_given()
     {
         $this->beConstructedWith('/invalid');
 
-        $this->shouldThrow('Supervisor\Exception\LoaderException')->duringLoad();
+        $this->shouldThrow('Supervisor\Configuration\Exception\LoaderException')->duringLoad();
     }
 
     function it_throws_an_exception_when_parsing_failed()
     {
         $this->beConstructedWith(__DIR__.'/../../../resources/invalid.conf');
 
-        $this->shouldThrow('Supervisor\Exception\LoaderException')->duringLoad();
+        $this->shouldThrow('Supervisor\Configuration\Exception\LoaderException')->duringLoad();
     }
 }

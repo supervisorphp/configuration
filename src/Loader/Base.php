@@ -4,8 +4,8 @@ namespace Supervisor\Configuration\Loader;
 
 use Indigo\Ini\Parser;
 use Supervisor\Configuration\Loader;
-use Supervisor\Configuration;
-use Supervisor\Exception\UnknownSection;
+use Supervisor\Configuration\Configuration;
+use Supervisor\Configuration\Exception\UnknownSection;
 
 /**
  * Provides common functionality to parsers.
