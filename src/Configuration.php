@@ -10,6 +10,24 @@ namespace Supervisor\Configuration;
 class Configuration
 {
     /**
+     * Available sections.
+     *
+     * @var array
+     */
+    protected $sectionMap = [
+        'eventlistener'    => 'Supervisor\Configuration\Section\EventListener',
+        'fcgi-program'     => 'Supervisor\Configuration\Section\FcgiProgram',
+        'group'            => 'Supervisor\Configuration\Section\Group',
+        'include'          => 'Supervisor\Configuration\Section\Includes',
+        'inet_http_server' => 'Supervisor\Configuration\Section\InetHttpServer',
+        'program'          => 'Supervisor\Configuration\Section\Program',
+        'supervisorctl'    => 'Supervisor\Configuration\Section\Supervisorctl',
+        'supervisord'      => 'Supervisor\Configuration\Section\Supervisord',
+        'unix_http_server' => 'Supervisor\Configuration\Section\UnixHttpServer',
+        'rpcinterface'     => 'Supervisor\Configuration\Section\RpcInterface',
+    ];
+
+    /**
      * Config sections.
      *
      * @var Section[]
@@ -112,5 +130,38 @@ class Configuration
         }
 
         return $ini;
+    }
+
+    /**
+     * Adds or overrides a default section mapping.
+     *
+     * @param string $section
+     * @param string $className
+     */
+    public function mapSection($section, $className)
+    {
+        if (false === class_exists($className)) {
+            throw new \InvalidArgumentException('This section class does not exist');
+        } elseif (false === is_a($className, 'Supervisor\Configuration\Section', true)) {
+            throw new \InvalidArgumentException('This section class must implement Supervisor\Configuration\Section');
+        }
+
+        $this->sectionMap[$section] = $className;
+    }
+
+    /**
+     * Finds a section class by name.
+     *
+     * @param string $section
+     *
+     * @return string|bool
+     */
+    public function findSection($section)
+    {
+        if (isset($this->sectionMap[$section])) {
+            return $this->sectionMap[$section];
+        }
+
+        return false;
     }
 }
