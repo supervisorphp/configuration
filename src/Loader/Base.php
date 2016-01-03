@@ -4,7 +4,6 @@ namespace Supervisor\Configuration\Loader;
 
 use Indigo\Ini\Parser;
 use Supervisor\Configuration\Loader;
-use Supervisor\Configuration\Configuration;
 use Supervisor\Configuration\Exception\UnknownSection;
 
 /**

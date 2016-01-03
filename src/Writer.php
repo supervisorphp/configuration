@@ -2,7 +2,6 @@
 
 namespace Supervisor\Configuration;
 
-use Supervisor\Configuration\Configuration;
 use Supervisor\Configuration\Exception\WrittingFailed;
 
 /**
