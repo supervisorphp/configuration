@@ -29,7 +29,7 @@ class UnixHttpServer extends Base
 
         // TODO: octal vs. decimal value
         $resolver->setDefined('chmod')
-            ->setAllowedTypes('chmod', 'integer');
+            ->setAllowedTypes('chmod', 'int');
 
         $resolver
             ->setDefined('chown')

@@ -29,6 +29,6 @@ class RpcInterface extends Named
 
         // Note: undocumented, based on examples
         $resolver->setDefined('retries')
-            ->setAllowedTypes('retries', 'integer');
+            ->setAllowedTypes('retries', 'int');
     }
 }

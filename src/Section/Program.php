@@ -42,7 +42,7 @@ class Program extends Named
 
         // TODO: octal vs. decimal value
         $resolver->setDefined('umask')
-            ->setAllowedTypes('umask', 'integer');
+            ->setAllowedTypes('umask', 'int');
 
         $resolver
             ->setDefined('serverurl')
@@ -65,13 +65,13 @@ class Program extends Named
             ->setAllowedTypes('process_name', 'string');
 
         $resolver->setDefined('numprocs')
-            ->setAllowedTypes('numprocs', 'integer');
+            ->setAllowedTypes('numprocs', 'int');
 
         $resolver->setDefined('numprocs_start')
-            ->setAllowedTypes('numprocs_start', 'integer');
+            ->setAllowedTypes('numprocs_start', 'int');
 
         $resolver->setDefined('priority')
-            ->setAllowedTypes('priority', 'integer');
+            ->setAllowedTypes('priority', 'int');
     }
 
     /**
@@ -93,10 +93,10 @@ class Program extends Named
             });
 
         $resolver->setDefined('startsecs')
-            ->setAllowedTypes('startsecs', 'integer');
+            ->setAllowedTypes('startsecs', 'int');
 
         $resolver->setDefined('startretries')
-            ->setAllowedTypes('startretries', 'integer');
+            ->setAllowedTypes('startretries', 'int');
     }
 
     /**
@@ -115,7 +115,7 @@ class Program extends Named
             ->setAllowedValues('stopsignal', ['TERM', 'HUP', 'INT', 'QUIT', 'KILL', 'USR1', 'USR2']);
 
         $resolver->setDefined('stopwaitsecs')
-            ->setAllowedTypes('stopwaitsecs', 'integer');
+            ->setAllowedTypes('stopwaitsecs', 'int');
 
         $resolver->setDefined('stopasgroup')
             ->setAllowedTypes('stopasgroup', 'bool');
@@ -153,7 +153,7 @@ class Program extends Named
         $this->configureByteProperty('stdout_logfile_maxbytes', $resolver);
 
         $resolver->setDefined('stdout_logfile_backups')
-            ->setAllowedTypes('stdout_logfile_backups', 'integer');
+            ->setAllowedTypes('stdout_logfile_backups', 'int');
 
         $resolver->setDefined('stdout_capture_maxbytes');
         $this->configureByteProperty('stdout_capture_maxbytes', $resolver);
@@ -180,7 +180,7 @@ class Program extends Named
         $this->configureByteProperty('stderr_logfile_maxbytes', $resolver);
 
         $resolver->setDefined('stderr_logfile_backups')
-            ->setAllowedTypes('stderr_logfile_backups', 'integer');
+            ->setAllowedTypes('stderr_logfile_backups', 'int');
 
         $resolver->setDefined('stderr_capture_maxbytes');
         $this->configureByteProperty('stderr_capture_maxbytes', $resolver);

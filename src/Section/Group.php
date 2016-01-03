@@ -27,6 +27,6 @@ class Group extends Named
         $this->configureArrayProperty('programs', $resolver);
 
         $resolver->setDefined('priority')
-            ->setAllowedTypes('priority', 'integer');
+            ->setAllowedTypes('priority', 'int');
     }
 }

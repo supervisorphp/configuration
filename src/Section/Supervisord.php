@@ -28,7 +28,7 @@ class Supervisord extends Base
         $this->configureByteProperty('logfile_maxbytes', $resolver);
 
         $resolver->setDefined('logfile_backups')
-            ->setAllowedTypes('logfile_backups', 'integer');
+            ->setAllowedTypes('logfile_backups', 'int');
 
         $resolver
             ->setDefined('loglevel')
@@ -41,16 +41,16 @@ class Supervisord extends Base
 
         // TODO: octal vs. decimal value
         $resolver->setDefined('umask')
-            ->setAllowedTypes('umask', 'integer');
+            ->setAllowedTypes('umask', 'int');
 
         $resolver->setDefined('nodaemon')
             ->setAllowedTypes('nodaemon', 'bool');
 
         $resolver->setDefined('minfds')
-            ->setAllowedTypes('minfds', 'integer');
+            ->setAllowedTypes('minfds', 'int');
 
         $resolver->setDefined('minprocs')
-            ->setAllowedTypes('minprocs', 'integer');
+            ->setAllowedTypes('minprocs', 'int');
 
         $resolver->setDefined('nocleanup')
             ->setAllowedTypes('nocleanup', 'bool');
