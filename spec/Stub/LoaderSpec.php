@@ -4,17 +4,17 @@ namespace spec\Supervisor\Stub;
 
 use PhpSpec\ObjectBehavior;
 
-class ParserSpec extends ObjectBehavior
+class LoaderSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('Supervisor\Stub\Parser');
-        $this->shouldHaveType('Supervisor\Configuration\Parser\Base');
+        $this->shouldHaveType('Supervisor\Stub\Loader');
+        $this->shouldHaveType('Supervisor\Configuration\Loader\Base');
     }
 
-    function it_is_a_parser()
+    function it_is_a_loader()
     {
-        $this->shouldImplement('Supervisor\Configuration\Parser');
+        $this->shouldImplement('Supervisor\Configuration\Loader');
     }
 
     function it_accepts_a_section_to_the_map()

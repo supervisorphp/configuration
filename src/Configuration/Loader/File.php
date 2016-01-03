@@ -1,9 +1,9 @@
 <?php
 
-namespace Supervisor\Configuration\Parser;
+namespace Supervisor\Configuration\Loader;
 
 use Supervisor\Configuration;
-use Supervisor\Exception\ParsingFailed;
+use Supervisor\Exception\LoaderException;
 
 /**
  * Parses a file.
@@ -28,10 +28,10 @@ class File extends Base
     /**
      * {@inheritdoc}
      */
-    public function parse(Configuration $configuration = null)
+    public function load(Configuration $configuration = null)
     {
         if (!is_file($this->file)) {
-            throw new ParsingFailed(sprintf('File "%s" not found', $this->file));
+            throw new LoaderException(sprintf('File "%s" not found', $this->file));
         }
 
         if (is_null($configuration)) {
@@ -40,7 +40,7 @@ class File extends Base
 
         // Suppress error to handle it
         if (false === $ini = @parse_ini_file($this->file, true, INI_SCANNER_RAW)) {
-            throw new ParsingFailed(sprintf('File "%s" cannot be parsed as INI', $this->file));
+            throw new LoaderException(sprintf('File "%s" cannot be parsed as INI', $this->file));
         }
 
         $sections = $this->parseArray($ini);

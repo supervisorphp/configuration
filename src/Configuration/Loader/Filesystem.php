@@ -1,9 +1,9 @@
 <?php
 
-namespace Supervisor\Configuration\Parser;
+namespace Supervisor\Configuration\Loader;
 
 use Supervisor\Configuration;
-use Supervisor\Exception\ParsingFailed;
+use Supervisor\Exception\LoaderException;
 use League\Flysystem\Filesystem as Flysystem;
 
 /**
@@ -32,18 +32,18 @@ class Filesystem extends File
     /**
      * {@inheritdoc}
      */
-    public function parse(Configuration $configuration = null)
+    public function load(Configuration $configuration = null)
     {
         if (is_null($configuration)) {
             $configuration = new Configuration();
         }
 
         if (!$this->filesystem->has($this->file)) {
-            throw new ParsingFailed(sprintf('File "%s" not found', $this->file));
+            throw new LoaderException(sprintf('File "%s" not found', $this->file));
         }
 
         if (!$fileContents = $this->filesystem->read($this->file)) {
-            throw new ParsingFailed(sprintf('Reading file "%s" failed', $this->file));
+            throw new LoaderException(sprintf('Reading file "%s" failed', $this->file));
         }
 
         $ini = $this->getParser()->parse($fileContents);

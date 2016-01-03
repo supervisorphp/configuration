@@ -1,9 +1,10 @@
 <?php
 
-namespace Supervisor\Configuration\Parser;
+namespace Supervisor\Configuration\Loader;
 
-use Indigo\Ini\Parser as IniParser;
-use Supervisor\Configuration\Parser;
+use Indigo\Ini\Parser;
+use Supervisor\Configuration\Loader;
+use Supervisor\Configuration;
 use Supervisor\Exception\UnknownSection;
 
 /**
@@ -11,7 +12,7 @@ use Supervisor\Exception\UnknownSection;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-abstract class Base implements Parser
+abstract class Base implements Loader
 {
     /**
      * Available sections.
@@ -32,7 +33,7 @@ abstract class Base implements Parser
     ];
 
     /**
-     * @var IniParser
+     * @var Parser
      */
     protected $parser;
 
@@ -110,12 +111,12 @@ abstract class Base implements Parser
     /**
      * Returns the INI parser.
      *
-     * @return IniParser
+     * @return Parser
      */
     protected function getParser()
     {
         if (!isset($this->parser)) {
-            $this->parser = new IniParser();
+            $this->parser = new Parser();
         }
 
         return $this->parser;

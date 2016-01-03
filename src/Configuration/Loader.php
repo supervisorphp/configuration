@@ -3,23 +3,23 @@
 namespace Supervisor\Configuration;
 
 use Supervisor\Configuration;
-use Supervisor\Exception\ParsingFailed;
+use Supervisor\Exception\LoaderException;
 
 /**
- * Parses configuration from various sources.
+ * Load configuration from various sources.
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-interface Parser
+interface Loader
 {
     /**
-     * Parse an input to a configuration.
+     * Load an input to a configuration.
      *
      * @param Configuration|null $configuration If null passed, it is created automatically
      *
      * @return Configuration
      *
-     * @throws ParsingFailed If the given data cannot be parsed
+     * @throws LoaderException If the given data cannot be parsed
      */
-    public function parse(Configuration $configuration = null);
+    public function load(Configuration $configuration = null);
 }

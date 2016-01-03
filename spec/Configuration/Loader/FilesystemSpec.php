@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\Supervisor\Configuration\Parser;
+namespace spec\Supervisor\Configuration\Loader;
 
 use Supervisor\Configuration;
 use League\Flysystem\Filesystem as Flysystem;
@@ -18,12 +18,12 @@ class FilesystemSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Supervisor\Configuration\Parser\Filesystem');
+        $this->shouldHaveType('Supervisor\Configuration\Loader\Filesystem');
     }
 
-    function it_is_a_parser()
+    function it_is_a_loader()
     {
-        $this->shouldImplement('Supervisor\Configuration\Parser');
+        $this->shouldImplement('Supervisor\Configuration\Loader');
     }
 
     function it_parses_configuration(Flysystem $filesystem, Configuration $configuration)
@@ -31,7 +31,7 @@ class FilesystemSpec extends ObjectBehavior
         $configuration->addSections(Argument::type('array'))->shouldBeCalled();
         $filesystem->read(Argument::type('string'))->willReturn("[supervisord]\nidentifier = supervisor");
 
-        $this->parse($configuration);
+        $this->load($configuration);
     }
 
     function it_throws_an_exception_when_invalid_file_given(Flysystem $filesystem)
@@ -39,13 +39,13 @@ class FilesystemSpec extends ObjectBehavior
         $filesystem->has(null)->willReturn(false);
         $this->beConstructedWith($filesystem, null);
 
-        $this->shouldThrow('Supervisor\Exception\ParsingFailed')->duringParse();
+        $this->shouldThrow('Supervisor\Exception\LoaderException')->duringLoad();
     }
 
     function it_throws_an_exception_when_cannot_read_file_given(Flysystem $filesystem)
     {
         $filesystem->read('supervisord.conf')->willReturn(false);
 
-        $this->shouldThrow('Supervisor\Exception\ParsingFailed')->duringParse();
+        $this->shouldThrow('Supervisor\Exception\LoaderException')->duringLoad();
     }
 }

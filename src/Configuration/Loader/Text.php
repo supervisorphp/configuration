@@ -1,9 +1,10 @@
 <?php
 
-namespace Supervisor\Configuration\Parser;
+namespace Supervisor\Configuration\Loader;
 
+use Indigo\Ini\Exception\ParserException;
 use Supervisor\Configuration;
-use Supervisor\Exception\ParsingFailed;
+use Supervisor\Exception\LoaderException;
 
 /**
  * Parse configuration from string.
@@ -28,13 +29,17 @@ class Text extends Base
     /**
      * {@inheritdoc}
      */
-    public function parse(Configuration $configuration = null)
+    public function load(Configuration $configuration = null)
     {
         if (is_null($configuration)) {
             $configuration = new Configuration();
         }
 
-        $ini = $this->getParser()->parse($this->text);
+        try {
+            $ini = $this->getParser()->parse($this->text);
+        } catch (ParserException $e) {
+            throw new LoaderException('Cannot parse INI', 0, $e);
+        }
 
         $sections = $this->parseArray($ini);
         $configuration->addSections($sections);
