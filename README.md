@@ -23,10 +23,10 @@ $ composer require supervisorphp/configuration
 Create a configuration using the builder.
 
 ``` php
-use Supervisor\Configuration;
+use Supervisor\Configuration\Configuration;
 use Supervisor\Configuration\Section\Supervisord;
 use Supervisor\Configuration\Section\Program;
-use Supervisor\Configuration\Renderer;
+use Indigophp\Ini\Rendere;
 
 $config = new Configuration;
 $renderer = new Renderer;
@@ -37,7 +37,7 @@ $config->addSection($section);
 $section = new Program('test', ['command' => 'cat']);
 $config->addSection($section);
 
-echo $renderer->render($config);
+echo $renderer->render($config->toArray());
 ```
 
 The following sections are available in this pacakge:
@@ -67,8 +67,8 @@ $section = new Program('test', ['command' => 'cat']);
 You can parse your existing configuration, and use it as a `Configuration` object.
 
 ``` php
-use Supervisor\Configuration;
-use Supervisor\Configuration\Parser\File;
+use Supervisor\Configuration\Configuration;
+use Supervisor\Configuration\Loader\IniFileLoader;
 
 $parser = new File('/etc/supervisor/supervisord.conf');
 
