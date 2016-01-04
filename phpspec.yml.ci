@@ -1,7 +1,7 @@
 suites:
     supervisor_configuration_suite:
-        namespace: Supervisor
-        psr4_prefix: Supervisor
+        namespace: Supervisor\Configuration
+        psr4_prefix: Supervisor\Configuration
 formatter.name: pretty
 extensions:
     - PhpSpec\Extension\CodeCoverageExtension

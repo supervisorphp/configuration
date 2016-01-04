@@ -12,25 +12,23 @@
     ],
     "require": {
         "php": ">=5.4",
+        "indigophp/ini": "^0.2",
+        "league/flysystem": "^1.0",
         "symfony/options-resolver": "^2.6|^3.0"
     },
     "require-dev": {
-        "league/flysystem": "^1.0",
         "phpspec/phpspec": "^2.4",
         "henrikbjorn/phpspec-code-coverage" : "^1.0"
     },
-    "suggest": {
-        "league/flysystem": "Used by Filesystem Parsers/Writers"
-    },
     "autoload": {
         "psr-4": {
-            "Supervisor\\": "src/"
+            "Supervisor\\Configuration\\": "src/"
         },
         "files": ["src/functions.php"]
     },
     "autoload-dev": {
         "psr-4": {
-            "Supervisor\\Stub\\": "stub/"
+            "spec\\Supervisor\\Configuration\\": "spec/"
         }
     },
     "scripts": {
@@ -41,7 +39,5 @@
         "branch-alias": {
             "dev-master": "0.2-dev"
         }
-    },
-    "prefer-stable": true,
-    "minimum-stability": "dev"
+    }
 }
