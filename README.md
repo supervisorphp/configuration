@@ -26,7 +26,7 @@ Create a configuration using the builder.
 use Supervisor\Configuration\Configuration;
 use Supervisor\Configuration\Section\Supervisord;
 use Supervisor\Configuration\Section\Program;
-use Indigophp\Ini\Rendere;
+use Indigo\Ini\Renderer;
 
 $config = new Configuration;
 $renderer = new Renderer;
