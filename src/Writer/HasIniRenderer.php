@@ -22,7 +22,7 @@ trait HasIniRenderer
     protected function getRenderer()
     {
         if (!isset($this->renderer)) {
-            $this->renderer = new Renderer(Renderer::ARRAY_MODE_CONCAT, Renderer::BOOLEAN_MODE_BOOL_STRING);
+            $this->renderer = new Renderer(Renderer::ARRAY_MODE_CONCAT | Renderer::BOOLEAN_MODE_BOOL_STRING);
         }
 
         return $this->renderer;
