@@ -3,7 +3,7 @@
 [![Latest Version](https://img.shields.io/github/release/supervisorphp/configuration.svg?style=flat-square)](https://github.com/supervisorphp/configuration/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 [![Total Downloads](https://img.shields.io/packagist/dt/supervisorphp/configuration.svg?style=flat-square)](https://packagist.org/packages/supervisorphp/configuration)
-![Test Suite](https://github.com/supervisorphp/configuration/workflows/Test%20Suite/badge.svg?event=push)
+[![Test Suite](https://github.com/supervisorphp/configuration/workflows/Test%20Suite/badge.svg?event=push)](https://github.com/supervisorphp/configuration/actions)
 
 **Manage Supervisor configuration in PHP.**
 
