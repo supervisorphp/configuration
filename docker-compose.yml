@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   ci:
-    image: supervisorphp/supervisor:latest
+    image: supervisorphp/configuration:latest
     build:
       context: .
     volumes:
