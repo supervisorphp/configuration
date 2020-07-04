@@ -24,7 +24,7 @@ trait SectionData
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -42,7 +42,7 @@ trait SectionData
     /**
      * {@inheritdoc}
      */
-    public function hasProperty($key)
+    public function hasProperty($key): bool
     {
         return isset($this->properties[$key]);
     }
@@ -50,7 +50,7 @@ trait SectionData
     /**
      * {@inheritdoc}
      */
-    public function setProperty($key, $value)
+    public function setProperty($key, $value): void
     {
         $this->properties[$key] = $value;
     }
@@ -58,7 +58,7 @@ trait SectionData
     /**
      * {@inheritdoc}
      */
-    public function getProperties()
+    public function getProperties(): array
     {
         return $this->properties;
     }
@@ -66,7 +66,7 @@ trait SectionData
     /**
      * {@inheritdoc}
      */
-    public function setProperties(array $properties)
+    public function setProperties(array $properties): void
     {
         $this->properties = $properties;
     }

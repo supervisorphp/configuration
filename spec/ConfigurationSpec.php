@@ -2,17 +2,19 @@
 
 namespace spec\Supervisor\Configuration;
 
-use Supervisor\Configuration\Section;
 use PhpSpec\ObjectBehavior;
+use Supervisor\Configuration\Section\SectionInterface;
+use Supervisor\Configuration\Configuration;
+use Supervisor\Configuration\Section\GenericSection;
 
 class ConfigurationSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('Supervisor\Configuration\Configuration');
+        $this->shouldHaveType(Configuration::class);
     }
 
-    function it_has_a_section(Section $section)
+    function it_has_a_section(SectionInterface $section)
     {
         $section->getName()->willReturn('section');
 
@@ -25,7 +27,7 @@ class ConfigurationSpec extends ObjectBehavior
         $this->hasSection('section')->shouldReturn(true);
     }
 
-    function it_removes_a_section(Section $section)
+    function it_removes_a_section(SectionInterface $section)
     {
         $section->getName()->willReturn('section');
 
@@ -38,7 +40,7 @@ class ConfigurationSpec extends ObjectBehavior
         $this->hasSection('section')->shouldReturn(false);
     }
 
-    function it_has_sections(Section $section)
+    function it_has_sections(SectionInterface $section)
     {
         $section->getName()->willReturn('section');
 
@@ -49,7 +51,7 @@ class ConfigurationSpec extends ObjectBehavior
         $this->getSections()->shouldReturn(['section' => $section]);
     }
 
-    function it_accepts_sections(Section $section)
+    function it_accepts_sections(SectionInterface $section)
     {
         $section->getName()->willReturn('section');
 
@@ -58,7 +60,7 @@ class ConfigurationSpec extends ObjectBehavior
         $this->getSections()->shouldReturn(['section' => $section]);
     }
 
-    function it_resets_sections(Section $section)
+    function it_resets_sections(SectionInterface $section)
     {
         $section->getName()->willReturn('section');
 
@@ -71,9 +73,9 @@ class ConfigurationSpec extends ObjectBehavior
 
     function it_maps_a_section_to_a_class()
     {
-        $this->mapSection('section', 'Supervisor\Configuration\Section\GenericSection');
+        $this->mapSection('section', GenericSection::class);
 
-        $this->findSection('section')->shouldReturn('Supervisor\Configuration\Section\GenericSection');
+        $this->findSection('section')->shouldReturn(GenericSection::class);
     }
 
     function it_returns_false_when_a_mapping_is_not_found()

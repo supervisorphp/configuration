@@ -8,17 +8,27 @@
         {
             "name": "Márk Sági-Kazár",
             "email": "mark.sagikazar@gmail.com"
+        },
+        {
+            "name": "Buster Neece",
+            "email": "buster@busterneece.com"
         }
     ],
     "require": {
-        "php": ">=5.4",
+        "php": ">=7.3",
         "indigophp/ini": "^0.2",
-        "league/flysystem": "^1.0",
         "symfony/options-resolver": "^2.6|^3.0|^4.0|^5.0"
     },
     "require-dev": {
-        "phpspec/phpspec": "^2.4",
-        "henrikbjorn/phpspec-code-coverage" : "^1.0"
+        "league/flysystem": "^1.0",
+        "overtrue/phplint": "^2.0",
+        "phpspec/phpspec": "^6.2",
+        "phpstan/phpstan": "^0.12.32",
+        "phpstan/phpstan-strict-rules": "^0.12.2",
+        "roave/security-advisories": "dev-master"
+    },
+    "suggest": {
+        "league/flysystem": "Allows reading and writing to many filesystems."
     },
     "autoload": {
         "psr-4": {
@@ -32,12 +42,14 @@
         }
     },
     "scripts": {
-        "test": "vendor/bin/phpspec run",
-        "test-ci": "vendor/bin/phpspec run -c phpspec.yml.ci"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.3-dev"
-        }
+        "ci": [
+            "@composer install --prefer-dist --no-progress --no-suggest",
+            "@phplint",
+            "@phpstan",
+            "@phpspec"
+        ],
+        "phplint": "phplint",
+        "phpstan": "phpstan analyze",
+        "phpspec": "phpspec run"
     }
 }

@@ -1,13 +1,13 @@
 <?php
 
-namespace Supervisor\Configuration;
+namespace Supervisor\Configuration\Section;
 
 /**
  * Properties are grouped into sections.
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-interface Section
+interface SectionInterface
 {
     /**
      * Returns the section name.
@@ -16,7 +16,7 @@ interface Section
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Returns a specific property.
@@ -34,27 +34,27 @@ interface Section
      *
      * @return bool
      */
-    public function hasProperty($key);
+    public function hasProperty($key): bool;
 
     /**
      * Sets a specific property.
      *
      * @param string $key
-     * @param mixed  $value
+     * @param mixed $value
      */
-    public function setProperty($key, $value);
+    public function setProperty($key, $value): void;
 
     /**
      * Returns the properties as an array.
      *
      * @return array
      */
-    public function getProperties();
+    public function getProperties(): array;
 
     /**
      * Sets an array of properties.
      *
      * @param array $properties
      */
-    public function setProperties(array $properties);
+    public function setProperties(array $properties): void;
 }

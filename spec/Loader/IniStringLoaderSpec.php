@@ -5,9 +5,14 @@ namespace spec\Supervisor\Configuration\Loader;
 use Supervisor\Configuration\Configuration;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use Supervisor\Configuration\Loader\IniStringLoader;
+use Supervisor\Configuration\Section\Supervisord;
+use Supervisor\Configuration\Exception\LoaderException;
 
 class IniStringLoaderSpec extends ObjectBehavior
 {
+    use LoaderBehavior;
+
     function let()
     {
         $this->beConstructedWith("[supervisord]\nidentifier = supervisor");
@@ -15,18 +20,20 @@ class IniStringLoaderSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Supervisor\Configuration\Loader\IniStringLoader');
+        $this->shouldHaveType(IniStringLoader::class);
     }
 
     function it_loads_ini_configuration_from_string(Configuration $configuration)
     {
-        $configuration->findSection('supervisord')->willReturn('Supervisor\Configuration\Section\Supervisord');
+        $configuration->findSection('supervisord')
+            ->willReturn(Supervisord::class);
 
-        $configuration->addSection(Argument::type('Supervisor\Configuration\Section\Supervisord'))->shouldBeCalled();
+        $configuration->addSection(Argument::type(Supervisord::class))
+            ->shouldBeCalled();
 
         $newConfig = $this->load($configuration);
 
-        $newConfig->shouldHaveType('Supervisor\Configuration\Configuration');
+        $newConfig->shouldHaveType(Configuration::class);
         $newConfig->shouldBe($configuration);
     }
 
@@ -34,6 +41,7 @@ class IniStringLoaderSpec extends ObjectBehavior
     {
         $this->beConstructedWith('?{}|&~![()^"');
 
-        $this->shouldThrow('Supervisor\Configuration\Exception\LoaderException')->duringLoad();
+        $this->shouldThrow(LoaderException::class)
+            ->duringLoad();
     }
 }

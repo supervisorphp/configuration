@@ -1,7 +1,8 @@
 <?php
 
-namespace Supervisor\Configuration;
+namespace Supervisor\Configuration\Loader;
 
+use Supervisor\Configuration\Configuration;
 use Supervisor\Configuration\Exception\LoaderException;
 
 /**
@@ -9,7 +10,7 @@ use Supervisor\Configuration\Exception\LoaderException;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-interface Loader
+interface LoaderInterface
 {
     /**
      * Load an input to a configuration.
@@ -20,5 +21,5 @@ interface Loader
      *
      * @throws LoaderException If the given data cannot be parsed
      */
-    public function load(Configuration $configuration = null);
+    public function load(Configuration $configuration = null): Configuration;
 }

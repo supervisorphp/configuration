@@ -1,6 +1,7 @@
 <?php
-
 namespace Supervisor\Configuration;
+
+use Supervisor\Configuration\Section\SectionInterface;
 
 /**
  * Supervisor configuration parser and generator.
@@ -15,22 +16,22 @@ class Configuration
      * @var array
      */
     protected $sectionMap = [
-        'eventlistener'    => 'Supervisor\Configuration\Section\EventListener',
-        'fcgi-program'     => 'Supervisor\Configuration\Section\FcgiProgram',
-        'group'            => 'Supervisor\Configuration\Section\Group',
-        'include'          => 'Supervisor\Configuration\Section\Includes',
-        'inet_http_server' => 'Supervisor\Configuration\Section\InetHttpServer',
-        'program'          => 'Supervisor\Configuration\Section\Program',
-        'supervisorctl'    => 'Supervisor\Configuration\Section\Supervisorctl',
-        'supervisord'      => 'Supervisor\Configuration\Section\Supervisord',
-        'unix_http_server' => 'Supervisor\Configuration\Section\UnixHttpServer',
-        'rpcinterface'     => 'Supervisor\Configuration\Section\RpcInterface',
+        'eventlistener'    => Section\EventListener::class,
+        'fcgi-program'     => Section\FcgiProgram::class,
+        'group'            => Section\Group::class,
+        'include'          => Section\Includes::class,
+        'inet_http_server' => Section\InetHttpServer::class,
+        'program'          => Section\Program::class,
+        'supervisorctl'    => Section\Supervisorctl::class,
+        'supervisord'      => Section\Supervisord::class,
+        'unix_http_server' => Section\UnixHttpServer::class,
+        'rpcinterface'     => Section\RpcInterface::class,
     ];
 
     /**
      * Config sections.
      *
-     * @var Section[]
+     * @var SectionInterface[]
      */
     protected $sections = [];
 
@@ -38,14 +39,14 @@ class Configuration
      * Returns a specific section by name.
      *
      * @param string $section
-     *
-     * @return Section|null
+     * @return SectionInterface|null
      */
-    public function getSection($section)
+    public function getSection(string $section): ?SectionInterface
     {
         if ($this->hasSection($section)) {
             return $this->sections[$section];
         }
+        return null;
     }
 
     /**
@@ -55,7 +56,7 @@ class Configuration
      *
      * @return bool
      */
-    public function hasSection($section)
+    public function hasSection(string $section): bool
     {
         return array_key_exists($section, $this->sections);
     }
@@ -63,9 +64,9 @@ class Configuration
     /**
      * Adds or overrides a section.
      *
-     * @param Section $section
+     * @param SectionInterface $section
      */
-    public function addSection(Section $section)
+    public function addSection(SectionInterface $section): void
     {
         $this->sections[$section->getName()] = $section;
     }
@@ -75,9 +76,9 @@ class Configuration
      *
      * @param string $section
      *
-     * @return bool
+     * @return bool Whether the section existed before this function call.
      */
-    public function removeSection($section)
+    public function removeSection($section): bool
     {
         if ($has = $this->hasSection($section)) {
             unset($this->sections[$section]);
@@ -89,9 +90,9 @@ class Configuration
     /**
      * Returns all sections.
      *
-     * @return Section[]
+     * @return SectionInterface[]
      */
-    public function getSections()
+    public function getSections(): array
     {
         return $this->sections;
     }
@@ -99,9 +100,9 @@ class Configuration
     /**
      * Adds or overrides an array sections.
      *
-     * @param Section[] $sections
+     * @param SectionInterface[] $sections
      */
-    public function addSections(array $sections)
+    public function addSections(array $sections): void
     {
         foreach ($sections as $section) {
             $this->addSection($section);
@@ -111,7 +112,7 @@ class Configuration
     /**
      * Resets Configuration.
      */
-    public function reset()
+    public function reset(): void
     {
         $this->sections = [];
     }
@@ -121,7 +122,7 @@ class Configuration
      *
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         $ini = [];
 
@@ -138,11 +139,12 @@ class Configuration
      * @param string $section
      * @param string $className
      */
-    public function mapSection($section, $className)
+    public function mapSection($section, $className): void
     {
         if (false === class_exists($className)) {
             throw new \InvalidArgumentException('This section class does not exist');
-        } elseif (false === is_a($className, 'Supervisor\Configuration\Section', true)) {
+        }
+        if (false === is_a($className, SectionInterface::class, true)) {
             throw new \InvalidArgumentException('This section class must implement Supervisor\Configuration\Section');
         }
 
@@ -158,10 +160,6 @@ class Configuration
      */
     public function findSection($section)
     {
-        if (isset($this->sectionMap[$section])) {
-            return $this->sectionMap[$section];
-        }
-
-        return false;
+        return $this->sectionMap[$section] ?? false;
     }
 }

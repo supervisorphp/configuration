@@ -3,12 +3,13 @@
 namespace spec\Supervisor\Configuration;
 
 use PhpSpec\ObjectBehavior;
+use Supervisor\Configuration\Util;
 
 class UtilSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('Supervisor\Configuration\Util');
+        $this->shouldHaveType(Util::class);
     }
 
     function it_tests_a_byte_integer_representation()

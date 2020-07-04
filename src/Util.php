@@ -16,7 +16,7 @@ class Util
      *
      * @return bool
      */
-    public static function isByte($value)
+    public static function isByte($value): bool
     {
         return is_numeric($value) or (is_string($value) and preg_match('/[0-9]+kb|mb|gb/i', $value));
     }

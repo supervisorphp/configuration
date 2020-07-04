@@ -5,18 +5,14 @@ namespace Supervisor\Configuration\Loader;
 use Indigo\Ini\Exception\ParserException;
 use Supervisor\Configuration\Configuration;
 use Supervisor\Configuration\Exception\LoaderException;
-use Supervisor\Configuration\Loader;
 
 /**
  * Parses INI configuration from string.
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-final class IniStringLoader implements Loader
+final class IniStringLoader extends AbstractLoader
 {
-    use HasIniParser;
-    use SectionParser;
-
     /**
      * @var string
      */
@@ -33,7 +29,7 @@ final class IniStringLoader implements Loader
     /**
      * {@inheritdoc}
      */
-    public function load(Configuration $configuration = null)
+    public function load(Configuration $configuration = null): Configuration
     {
         try {
             $ini = $this->getParser()->parse($this->string);

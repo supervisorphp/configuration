@@ -1,7 +1,8 @@
 <?php
 
-namespace Supervisor\Configuration;
+namespace Supervisor\Configuration\Writer;
 
+use Supervisor\Configuration\Configuration;
 use Supervisor\Configuration\Exception\WriterException;
 
 /**
@@ -9,7 +10,7 @@ use Supervisor\Configuration\Exception\WriterException;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-interface Writer
+interface WriterInterface
 {
     /**
      * Writes a Configuration.

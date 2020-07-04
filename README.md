@@ -14,7 +14,7 @@
 
 Via Composer
 
-``` bash
+```bash
 $ composer require supervisorphp/configuration
 ```
 
@@ -22,19 +22,14 @@ $ composer require supervisorphp/configuration
 
 Create a configuration using the builder.
 
-``` php
-use Supervisor\Configuration\Configuration;
-use Supervisor\Configuration\Section\Supervisord;
-use Supervisor\Configuration\Section\Program;
-use Indigo\Ini\Renderer;
+```php
+$config = new \Supervisor\Configuration\Configuration;
+$renderer = new \Indigo\Ini\Renderer;
 
-$config = new Configuration;
-$renderer = new Renderer;
-
-$section = new Supervisord(['identifier' => 'supervisor']);
+$section = new \Supervisor\Configuration\Section\Supervisord(['identifier' => 'supervisor']);
 $config->addSection($section);
 
-$section = new Program('test', ['command' => 'cat']);
+$section = new \Supervisor\Configuration\Section\Program('test', ['command' => 'cat']);
 $config->addSection($section);
 
 echo $renderer->render($config->toArray());
@@ -55,8 +50,8 @@ The following sections are available in this pacakge:
 
 *__Note:__ These sections has to be instantiated with a name and optionally a properties array:
 
-``` php
-$section = new Program('test', ['command' => 'cat']);
+```php
+$section = new \Supervisor\Configuration\Section\Program('test', ['command' => 'cat']);
 ```
 
 **__Note:__ The keyword `include` is reserved in PHP, so the class name is `Includes`, but the section name is still `include`.
@@ -66,45 +61,34 @@ $section = new Program('test', ['command' => 'cat']);
 
 You can parse your existing configuration, and use it as a `Configuration` object.
 
-``` php
-use Supervisor\Configuration\Configuration;
-use Supervisor\Configuration\Loader\IniFileLoader;
-
-$parser = new File('/etc/supervisor/supervisord.conf');
-
-$configuration = new Configuration;
-
-// argument is optional, returns a new Configuration object if not passed
-$parser->parse($configuration);
+```php
+$loader = new \Supervisor\Configuration\Loader\IniFileLoader('/etc/supervisor/supervisord.conf');
+$configuration = $loader->load();
 ```
 
-Available parsers:
+Available loaders:
 
-- _File_
-- _Filesystem_ (Using [league/flysystem](https://github.com/thephpleague/flysystem))
-- _Text_
-
+- `IniFileLoader`
+- `FlysystemLoader` (Using [league/flysystem](https://github.com/thephpleague/flysystem))
+- `IniStringLoader`
 
 ### Writting configuration
 
 You can use `Writer`s to write configuration to various destinations.
 
-``` php
-use Supervisor\Configuration;
-use Supervisor\Configuration\Writer\File;
+```php
+$configuration = new \Supervisor\Configuration\Configuration;
 
-// As a second parameter you can optionally pass an instance of Supervisor\Configuration\Renderer
-$writer = new File('/etc/supervisor/supervisord.conf');
+// Modify configuration...
 
-$configuration = new Configuration;
-
+$writer = new \Supervisor\Configuration\Writer\IniFileWriter('/etc/supervisor/supervisord.conf');
 $writer->write($configuration);
 ```
 
 Available writers:
 
-- _File_
-- _Filesystem_ (Using [league/flysystem](https://github.com/thephpleague/flysystem))
+- `IniFileWriter`
+- `FlysystemWriter` (Using [league/flysystem](https://github.com/thephpleague/flysystem))
 
 
 You can find detailed info about properties for each section here:
@@ -113,8 +97,8 @@ You can find detailed info about properties for each section here:
 
 ## Testing
 
-``` bash
-$ composer test
+```bash
+$ composer ci
 ```
 
 

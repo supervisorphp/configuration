@@ -12,18 +12,25 @@ use Supervisor\Configuration\Exception\LoaderException;
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-final class IniFileLoader extends AbstractLoader
+final class FlysystemLoader extends AbstractLoader
 {
+    /**
+     * @var Filesystem
+     */
+    protected $filesystem;
+
     /**
      * @var string
      */
     protected $file;
 
     /**
-     * @param string $file
+     * @param Filesystem $filesystem
+     * @param string     $file
      */
-    public function __construct(string $file)
+    public function __construct(Filesystem $filesystem, string $file)
     {
+        $this->filesystem = $filesystem;
         $this->file = $file;
     }
 
@@ -32,11 +39,11 @@ final class IniFileLoader extends AbstractLoader
      */
     public function load(Configuration $configuration = null): Configuration
     {
-        if (!file_exists($this->file)) {
+        if (!$this->filesystem->has($this->file)) {
             throw new LoaderException(sprintf('File "%s" not found', $this->file));
         }
 
-        if (!$fileContents = file_get_contents($this->file)) {
+        if (!$fileContents = $this->filesystem->read($this->file)) {
             throw new LoaderException(sprintf('Reading file "%s" failed', $this->file));
         }
 

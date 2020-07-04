@@ -1,16 +1,33 @@
 <?php
-
 namespace Supervisor\Configuration\Loader;
 
+use Indigo\Ini\Parser;
 use Supervisor\Configuration\Configuration;
+use Supervisor\Configuration\Section\GenericSection;
 
-/**
- * Parses a section array.
- *
- * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
- */
-trait SectionParser
+abstract class AbstractLoader implements LoaderInterface
 {
+    abstract public function load(Configuration $configuration = null): Configuration;
+
+    /**
+     * @var Parser
+     */
+    protected $parser;
+
+    /**
+     * Returns the INI parser.
+     *
+     * @return Parser
+     */
+    protected function getParser(): Parser
+    {
+        if (!isset($this->parser)) {
+            $this->parser = new Parser();
+        }
+
+        return $this->parser;
+    }
+
     /**
      * Parses a section array.
      *
@@ -19,7 +36,7 @@ trait SectionParser
      *
      * @return Configuration
      */
-    public function parseSections(array $sections, Configuration $configuration = null)
+    public function parseSections(array $sections, Configuration $configuration = null): Configuration
     {
         if (is_null($configuration)) {
             $configuration = new Configuration();
@@ -31,7 +48,7 @@ trait SectionParser
             $class = $configuration->findSection($name[0]);
 
             if (false === $class) {
-                $class = 'Supervisor\Configuration\Section\GenericSection';
+                $class = GenericSection::class;
                 $name[1] = $sectionName;
             }
 

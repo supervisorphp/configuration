@@ -2,16 +2,15 @@
 
 namespace Supervisor\Configuration\Section;
 
-use Supervisor\Configuration\Section;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\Options;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Abstract section with some basic implementation.
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-abstract class Base implements Section
+abstract class Base implements SectionInterface
 {
     use SectionData;
 
@@ -31,7 +30,7 @@ abstract class Base implements Section
     /**
      * {@inheritdoc}
      */
-    public function setProperty($key, $value)
+    public function setProperty($key, $value): void
     {
         $properties = $this->properties;
         $properties[$key] = $value;
@@ -42,7 +41,7 @@ abstract class Base implements Section
     /**
      * {@inheritdoc}
      */
-    public function setProperties(array $properties)
+    public function setProperties(array $properties): void
     {
         $this->properties = $this->resolveProperties($properties);
     }
