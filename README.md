@@ -2,10 +2,8 @@
 
 [![Latest Version](https://img.shields.io/github/release/supervisorphp/configuration.svg?style=flat-square)](https://github.com/supervisorphp/configuration/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Build Status](https://img.shields.io/travis/supervisorphp/configuration.svg?style=flat-square)](https://travis-ci.org/supervisorphp/configuration)
-[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/supervisorphp/configuration.svg?style=flat-square)](https://scrutinizer-ci.com/g/supervisorphp/configuration)
-[![Quality Score](https://img.shields.io/scrutinizer/g/supervisorphp/configuration.svg?style=flat-square)](https://scrutinizer-ci.com/g/supervisorphp/configuration)
 [![Total Downloads](https://img.shields.io/packagist/dt/supervisorphp/configuration.svg?style=flat-square)](https://packagist.org/packages/supervisorphp/configuration)
+![Test Suite](https://github.com/supervisorphp/configuration/workflows/Test%20Suite/badge.svg?event=push)
 
 **Manage Supervisor configuration in PHP.**
 
@@ -15,7 +13,7 @@
 Via Composer
 
 ```bash
-$ composer require supervisorphp/configuration
+composer require supervisorphp/configuration
 ```
 
 ## Usage
@@ -35,7 +33,7 @@ $config->addSection($section);
 echo $renderer->render($config->toArray());
 ```
 
-The following sections are available in this pacakge:
+The following sections are available in this package:
 
 - _Supervisord_
 - _Supervisorctl_
@@ -72,7 +70,7 @@ Available loaders:
 - `FlysystemLoader` (Using [league/flysystem](https://github.com/thephpleague/flysystem))
 - `IniStringLoader`
 
-### Writting configuration
+### Writing configuration
 
 You can use `Writer`s to write configuration to various destinations.
 
@@ -98,7 +96,7 @@ You can find detailed info about properties for each section here:
 ## Testing
 
 ```bash
-$ composer ci
+composer ci
 ```
 
 
