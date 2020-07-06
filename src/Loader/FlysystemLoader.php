@@ -26,7 +26,7 @@ final class FlysystemLoader extends AbstractLoader
 
     /**
      * @param Filesystem $filesystem
-     * @param string     $file
+     * @param string $file
      */
     public function __construct(Filesystem $filesystem, string $file)
     {

@@ -80,7 +80,7 @@ abstract class Base implements SectionInterface
     /**
      * Configures an array property for OptionsResolver.
      *
-     * @param string          $property
+     * @param string $property
      * @param OptionsResolver $resolver
      */
     protected function configureArrayProperty($property, OptionsResolver $resolver)
@@ -120,7 +120,7 @@ abstract class Base implements SectionInterface
     /**
      * Configures a byte property for OptionsResolver.
      *
-     * @param string          $property
+     * @param string $property
      * @param OptionsResolver $resolver
      */
     protected function configureByteProperty($property, OptionsResolver $resolver)

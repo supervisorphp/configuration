@@ -25,7 +25,7 @@ final class FlysystemWriter extends AbstractWriter
 
     /**
      * @param Filesystem $filesystem
-     * @param string     $file
+     * @param string $file
      */
     public function __construct(Filesystem $filesystem, $file)
     {

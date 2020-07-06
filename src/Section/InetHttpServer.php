@@ -29,7 +29,7 @@ class InetHttpServer extends Base
             ->setAllowedTypes('port', ['integer', 'string'])
             ->setNormalizer('port', function (Options $options, $value) {
                 // We cast it to integer first to make sure it is an integer representation
-                is_numeric($value) and $value = '*:'.intval($value);
+                is_numeric($value) and $value = '*:' . intval($value);
 
                 return $value;
             });

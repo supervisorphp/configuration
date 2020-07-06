@@ -18,11 +18,11 @@ abstract class Named extends Base
 
     /**
      * @param string $name
-     * @param array  $properties
+     * @param array $properties
      */
     public function __construct($name, array $properties = [])
     {
-        $this->name = $this->sectionName.':'.trim($name);
+        $this->name = $this->sectionName . ':' . trim($name);
 
         parent::__construct($properties);
     }

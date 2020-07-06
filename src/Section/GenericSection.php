@@ -13,7 +13,7 @@ final class GenericSection implements SectionInterface
 
     /**
      * @param string $name
-     * @param array  $properties
+     * @param array $properties
      */
     public function __construct($name, array $properties = [])
     {

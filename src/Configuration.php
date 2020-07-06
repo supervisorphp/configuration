@@ -16,16 +16,16 @@ class Configuration
      * @var array
      */
     protected $sectionMap = [
-        'eventlistener'    => Section\EventListener::class,
-        'fcgi-program'     => Section\FcgiProgram::class,
-        'group'            => Section\Group::class,
-        'include'          => Section\Includes::class,
+        'eventlistener' => Section\EventListener::class,
+        'fcgi-program' => Section\FcgiProgram::class,
+        'group' => Section\Group::class,
+        'include' => Section\Includes::class,
         'inet_http_server' => Section\InetHttpServer::class,
-        'program'          => Section\Program::class,
-        'supervisorctl'    => Section\Supervisorctl::class,
-        'supervisord'      => Section\Supervisord::class,
+        'program' => Section\Program::class,
+        'supervisorctl' => Section\Supervisorctl::class,
+        'supervisord' => Section\Supervisord::class,
         'unix_http_server' => Section\UnixHttpServer::class,
-        'rpcinterface'     => Section\RpcInterface::class,
+        'rpcinterface' => Section\RpcInterface::class,
     ];
 
     /**
@@ -39,6 +39,7 @@ class Configuration
      * Returns a specific section by name.
      *
      * @param string $section
+     *
      * @return SectionInterface|null
      */
     public function getSection(string $section): ?SectionInterface

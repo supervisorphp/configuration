@@ -31,7 +31,7 @@ abstract class AbstractLoader implements LoaderInterface
     /**
      * Parses a section array.
      *
-     * @param array              $sections
+     * @param array $sections
      * @param Configuration|null $configuration
      *
      * @return Configuration

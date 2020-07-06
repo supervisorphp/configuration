@@ -38,8 +38,10 @@ class FlysystemWriterSpec extends ObjectBehavior
             ->shouldReturn(null);
     }
 
-    function it_throws_an_exception_when_configuration_cannot_be_written(Filesystem $filesystem, Configuration $configuration)
-    {
+    function it_throws_an_exception_when_configuration_cannot_be_written(
+        Filesystem $filesystem,
+        Configuration $configuration
+    ) {
         $configuration->toArray()
             ->willReturn([]);
 
