@@ -126,7 +126,7 @@ abstract class Base implements SectionInterface
     protected function configureByteProperty($property, OptionsResolver $resolver)
     {
         $resolver
-            ->setAllowedTypes($property, 'byte')
+            ->setAllowedValues($property, function($value) {return is_byte($value);})
             ->setNormalizer($property, function (Options $options, $value) {
                 return is_numeric($value) ? intval($value) : $value;
             });
