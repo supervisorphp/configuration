@@ -82,15 +82,12 @@ class Program extends Named
     private function configureStartControlProperties(OptionsResolver $resolver)
     {
         $resolver->setDefined('autostart')
-            ->setAllowedTypes('autostart', 'bool');
+            ->setAllowedTypes('autostart', ['bool', 'string'])
+            ->setAllowedValues('autostart', [true, false, 'true', 'false', 'unexpected']);
 
-        $resolver
-            ->setDefined('autorestart')
+        $resolver->setDefined('autorestart')
             ->setAllowedTypes('autorestart', ['bool', 'string'])
-            ->setAllowedValues('autorestart', [true, false, 'true', 'false', 'unexpected'])
-            ->setNormalizer('autorestart', function (Options $options, $value) {
-                return (is_bool($value) or $value === 'unexpected') ? $value : ($value === 'true' ? true : false);
-            });
+            ->setAllowedValues('autorestart', [true, false, 'true', 'false', 'unexpected']);
 
         $resolver->setDefined('startsecs')
             ->setAllowedTypes('startsecs', 'int');
